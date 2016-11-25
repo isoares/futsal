@@ -1,0 +1,18 @@
+.menu
+	ul.nav.nav-pills
+		li(class=(menu == 'index')?'active':'')
+			a(href='/') Home
+		if (user)
+			li(class=(menu == 'users')?'active':'')
+				a(href="/users") Users
+			//li(class=(menu == 'register')?'active':'')
+			//	a(href='/register') Register
+			li
+				a(href="/logout")
+					span.glyphicon.glyphicon-log-out
+					|	Log out (#{user.username})
+		else
+			li(class=(menu == 'login')?'active':'')
+				a(href='/login')
+					span.glyphicon.glyphicon-log-in
+					|	Log in
