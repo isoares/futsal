@@ -6,7 +6,7 @@ html
 		link(rel='stylesheet', href='/stylesheets/style.css')
 		script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js')
 		script(src='/javascripts/app.js')
-	body
+	body(ng-app="futsalApp")
 		.container
 			block page
 			block header
@@ -14,3 +14,5 @@ html
 					include includes/menu
 			.content
 				block content
+				block footer
+					h4 {{info.message}}

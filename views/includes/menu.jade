@@ -3,10 +3,10 @@
 		li(class=(menu == 'index')?'active':'')
 			a(href='/') Home
 		if (user)
+			li(class=(menu == 'players')?'active':'')
+				a(href="/players") Players
 			li(class=(menu == 'users')?'active':'')
 				a(href="/users") Users
-			//li(class=(menu == 'register')?'active':'')
-			//	a(href='/register') Register
 			li
 				a(href="/logout")
 					span.glyphicon.glyphicon-log-out

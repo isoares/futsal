@@ -1,0 +1,27 @@
+extends ../index
+
+block page
+	- var menu = 'players'
+
+block content
+	div(ng-controller="playerCont")
+		h1 Player
+		div.row
+			div.col-xs-5
+				a(href="/newPlayer").btn.btn-default
+					span.glyphicon.glyphicon-plus
+					|  New
+			div.col-xs-7
+				input.form-control(type="text" ng-model="query" placeholder="Search for a player")
+		div.row
+			div.col-xs-12
+				hr
+		div.row
+			div.col-xs-12
+				table.table.table-hover
+					thead
+						tr
+							th Name
+					tbody
+						tr(ng-repeat="p in playerList | filter:query")
+							td {{p.name}}

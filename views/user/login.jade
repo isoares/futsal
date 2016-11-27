@@ -1,0 +1,20 @@
+extends ../index
+
+block page
+	- var menu = 'login'
+	
+block content
+	div(ng-controller="userCont")
+		h1 Login Page
+		br
+		form(role='form' ng-submit="login()" style='max-width: 300px;')
+			.form-group
+				label(for="userUsername") Username:
+				input.form-control(type='text' ng-model="formData.username" id="userUsername" placeholder='Username')
+			.form-group
+				label(for="userPassword") Password:
+				input.form-control(type='password' ng-model="formData.password" id="userPassword" placeholder='Password')
+			button.btn.btn-default(type='submit') Submit
+			&nbsp;
+			a(href='/')
+				button.btn.btn-primary(type="button") Cancel

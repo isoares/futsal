@@ -1,0 +1,20 @@
+extends ../index
+
+block page
+	- var menu = 'users'
+
+block content
+	div(ng-controller="userCont")
+		h1 Users
+		a(href="/register").btn.btn-default
+			span.glyphicon.glyphicon-plus
+			|  New
+		table.table.table-hover
+			thead
+				tr
+					th Name
+					th Username
+			tbody
+				tr(ng-repeat="userItem in userList")
+					td {{userItem.name}}
+					td {{userItem.username}}

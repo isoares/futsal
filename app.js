@@ -62,10 +62,16 @@ app.get('/register', routes.getRegister);
 app.get('/login', routes.getLogin);
 app.get('/logout', routes.logout);
 app.get('/users', routes.users);
-app.get('/user/list', routes.usersList);
+app.get('/users/list', routes.usersList);
 
 app.post('/register', routes.postRegister);
 app.post('/login', routes.postLogin);
+
+app.get('/players', routes.players);
+app.get('/players/list', routes.playersList);
+app.get('/newPlayer', routes.newPlayer);
+
+app.post('/newPlayer', routes.postNewPlayer);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
