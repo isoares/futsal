@@ -52,10 +52,51 @@ angular.module('futsalApp', [])
 	        });
 	    
 	    $scope.createPlayer = function() {
-	        $http.post('/newPlayer', $scope.formData)
+	        $http.post('/newPlayer', $scope.player)
 	            .success(function(data) {
 	            	if (data == '') {
 	            		$window.location = '/players';
+	            	} else {
+	            		$rootScope.info = data;
+	            	}
+	            })
+	            .error(function(data) {
+	            	$rootScope.info = data;
+	            });
+	    };
+	})
+	.controller('sumulaCont', function($scope, $rootScope, $http, $window) {
+	    $http.get('/sumulas/list')
+	        .success(function(data) {
+	            $scope.sumulaList = data;
+	        })
+	        .error(function(data) {
+	        	$rootScope.info = data;
+	        });
+	    
+	    $http.get('/players/list')
+        	.success(function(data) {
+        		//$scope.playerList = data;
+        		
+        		$scope.sumula = {
+        				data: '',
+        				quadro: '',
+        				adversario: '',
+        				golsFavor: '',
+        				golsContra: '',
+        				players: data
+        			};
+        		
+        	})
+        	.error(function(data) {
+        		$rootScope.info = data;
+        	});
+	    
+	    $scope.createSumula = function() {
+	        $http.post('/newSumula', $scope.sumula)
+	            .success(function(data) {
+	            	if (data == '') {
+	            		$window.location = '/sumulas';
 	            	} else {
 	            		$rootScope.info = data;
 	            	}

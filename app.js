@@ -5,6 +5,9 @@
 
 var express = require('express')
   , routes = require('./routes')
+  , user = require('./routes/user')
+  , player = require('./routes/player')
+  , sumula = require('./routes/sumula')
   , http = require('http')
   , path = require('path');
 
@@ -58,20 +61,31 @@ passport.deserializeUser(Account.deserializeUser());
 mongoose.connect('mongodb://localhost/sumula');
 
 app.get('/', routes.index);
-app.get('/register', routes.getRegister);
-app.get('/login', routes.getLogin);
-app.get('/logout', routes.logout);
-app.get('/users', routes.users);
-app.get('/users/list', routes.usersList);
 
-app.post('/register', routes.postRegister);
-app.post('/login', routes.postLogin);
+// user
+app.get('/register', user.getRegister);
+app.get('/login', user.getLogin);
+app.get('/logout', user.logout);
+app.get('/users', user.users);
+app.get('/users/list', user.usersList);
 
-app.get('/players', routes.players);
-app.get('/players/list', routes.playersList);
-app.get('/newPlayer', routes.newPlayer);
+app.post('/register', user.postRegister);
+app.post('/login', user.postLogin);
 
-app.post('/newPlayer', routes.postNewPlayer);
+// player
+app.get('/players', player.players);
+app.get('/players/list', player.playersList);
+app.get('/newPlayer', player.newPlayer);
+
+app.post('/newPlayer', player.postNewPlayer);
+
+// sumula
+app.get('/sumulas', sumula.sumulas);
+app.get('/sumulas/list', sumula.sumulasList);
+app.get('/newSumula', sumula.newSumula);
+
+app.post('/newSumula', sumula.postNewSumula);
+
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

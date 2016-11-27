@@ -1,0 +1,52 @@
+extends ../index
+
+block page
+	- var menu = 'sumulas'
+
+block content
+	div(ng-controller="sumulaCont")
+		h1 New Sumula
+		br
+		div.row
+			div.col-xs-12
+				form(role="form", ng-submit="createSumula()")
+					div.row
+						div.col-xs-6
+							.form-group
+								label(for="sumulaData") Data
+								input.form-control(type="text" ng-model="sumula.data" id="sumulaData" placeholder="Enter sumula data")
+						div.col-xs-6
+							.form-group
+								label(for="sumulaQuadro") Quadro
+								input.form-control(type="text" ng-model="sumula.quadro" id="sumulaQuadro" placeholder="Enter sumula quadro")
+					div.row
+						div.col-xs-6
+							label BSF Futsal
+						div.col-xs-6
+							.form-group
+								label(for="sumulaAdversario") Adversario
+								input.form-control(type="text" ng-model="sumula.adversario" id="sumulaAdversario" placeholder="Enter sumula adversario")
+					div.row
+						div.col-xs-6
+							.form-group
+								label(for="sumulaGolsFavor") Gols Favor
+								input.form-control(type="text" ng-model="sumula.golsFavor" id="sumulaGolsFavor" placeholder="Enter sumula golsFavor")
+						div.col-xs-6
+							.form-group
+								label(for="sumulaGolsContra") Gols Contra
+								input.form-control(type="text" ng-model="sumula.golsContra" id="sumulaGolsContra" placeholder="Enter sumula golsContra")
+					div
+						hr
+					div.form-group
+						div(ng-repeat="p in sumula.players")
+							div.row
+								div.col-xs-6
+									label {{p.name}}
+								div.col-xs-6
+									input.form-control(type="text" ng-model="p.gols" placeholder="Enter {{p.name}} gols")
+									br
+					div
+						hr
+						button.btn.btn-default(type="submit") Submit
+						&nbsp;
+						a(href="/sumulas").button.btn.btn-primary Cancel

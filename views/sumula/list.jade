@@ -1,0 +1,37 @@
+extends ../index
+
+block page
+	- var menu = 'sumulas'
+
+block content
+	div(ng-controller="sumulaCont")
+		h1 Sumula
+		div.row
+			div.col-xs-5
+				a(href="/newSumula").btn.btn-default
+					span.glyphicon.glyphicon-plus
+					|  New
+			div.col-xs-7
+				input.form-control(type="text" ng-model="query" placeholder="Search for a sumula")
+		div.row
+			div.col-xs-12
+				hr
+		div.row
+			div.col-xs-12
+				table.table.table-hover
+					thead
+						tr
+							th Sumula
+							th Data
+							th Quadro
+							th Adversario
+							th Resultado
+					tbody
+						tr(ng-repeat="sumula in sumulaList | filter:query")
+							//td
+								//a(href="#/sumula/{{sumula._id}}") {{$index + 1}}
+							td {{$index + 1}}
+							td {{sumula.data}}
+							td {{sumula.quadro}}
+							td {{sumula.adversario}}
+							td BSF {{sumula.golsFavor}} x {{sumula.golsContra}} {{sumula.adversario}}

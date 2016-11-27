@@ -12,7 +12,7 @@ block content
 				form(role="form", ng-submit="createPlayer()" style='max-width: 300px;')
 					.form-group
 						label(for="playerName") Nome:
-						input.form-control(type="text" ng-model="formData.name" id="playerName" placeholder="Enter player name")
-					button.btn.btn-default(type="submit") Submit
-					&nbsp;
-					a(href="/players").button.btn.btn-primary Cancel
+						input.form-control(type="text" ng-model="player.name" id="playerName" placeholder="Enter player name")
+				button.btn.btn-default(type="submit") Submit
+				&nbsp;
+				a(href="/players").button.btn.btn-primary Cancel
