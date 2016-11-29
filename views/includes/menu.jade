@@ -2,6 +2,8 @@
 	ul.nav.nav-pills
 		li(class=(menu == 'index')?'active':'')
 			a(href='/') Home
+		li(class=(menu == 'reports')?'active':'')
+			a(href='/rPlayers') Reports
 		if (user)
 			li(class=(menu == 'sumulas')?'active':'')
 				a(href="/sumulas") Sumulas

@@ -105,4 +105,13 @@ angular.module('futsalApp', [])
 	            	$rootScope.info = data;
 	            });
 	    };
+	})
+	.controller('rPlayerCont', function($scope, $rootScope, $http, $window) {
+	    $http.get('/rPlayers/list')
+	        .success(function(data) {
+	            $scope.rPlayerList = data;
+	        })
+	        .error(function(data) {
+	        	$rootScope.info = data;
+	        });
 	});

@@ -8,6 +8,7 @@ var express = require('express')
   , user = require('./routes/user')
   , player = require('./routes/player')
   , sumula = require('./routes/sumula')
+  , reports = require('./routes/reports')
   , http = require('http')
   , path = require('path');
 
@@ -85,6 +86,10 @@ app.get('/sumulas/list', sumula.sumulasList);
 app.get('/newSumula', sumula.newSumula);
 
 app.post('/newSumula', sumula.postNewSumula);
+
+//reports - player
+app.get('/rPlayers', reports.rPlayers);
+app.get('/rPlayers/list', reports.rPlayersList);
 
 
 http.createServer(app).listen(app.get('port'), function(){

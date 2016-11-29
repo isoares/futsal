@@ -1,0 +1,24 @@
+extends ../index
+
+block page
+	- var menu = 'Reports'
+
+block content
+	div(ng-controller="rPlayerCont")
+		h1 Reports - Player
+		div.row
+			div.col-xs-5
+			div.col-xs-7
+				input.form-control(type="text" ng-model="query" placeholder="Search for a player")
+		div.row
+			div.col-xs-12
+				hr
+		div.row
+			div.col-xs-12
+				table.table.table-hover
+					thead
+						tr
+							th Name
+					tbody
+						tr(ng-repeat="p in rPlayerList | filter:query")
+							td {{p.p[0].name}} - {{p.gols}}
