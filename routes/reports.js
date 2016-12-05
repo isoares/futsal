@@ -17,7 +17,10 @@ exports.rPlayersList = function(req, res) {
 				{
 					$group : {
 						_id: "$players.idPlayer",
-						gols: { $sum: "$players.gols" }
+						gols: { $sum: "$players.gols" },
+						jogos: { $sum: 1 },
+						yellow: { $sum: { $cond: [ "$players.yellow", 1, 0 ] } },
+						red: { $sum: { $cond: [ "$players.red", 1, 0 ] } }
 					}
 				},
 				{

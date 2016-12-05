@@ -19,6 +19,16 @@ block content
 					thead
 						tr
 							th Name
+							th Jogos
+							th Gols
+							th Med. Gols
+							th Yellow
+							th Red
 					tbody
 						tr(ng-repeat="p in rPlayerList | filter:query")
-							td {{p.p[0].name}} - {{p.gols}}
+							td {{p.p[0].name}}
+							td {{p.jogos}}
+							td {{p.gols}}
+							td {{p.gols / p.jogos}}
+							td {{p.yellow}}
+							td {{p.red}}

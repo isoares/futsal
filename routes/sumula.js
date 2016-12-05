@@ -30,9 +30,10 @@ exports.newSumula = function(req, res) {
 exports.postNewSumula = function(req, res) {
 	var players = [];
 	req.body.players.forEach(function(item) {
-		var itemPlayer = {idPlayer: item._id, gols: item.gols};
-			
-		players.push(itemPlayer);
+		if (item.active) {
+			var itemPlayer = {idPlayer: item._id, gols: item.gols, yellow: item.yellow, red: item.red};
+			players.push(itemPlayer);
+		}
 	});
 	console.log("3");
 	

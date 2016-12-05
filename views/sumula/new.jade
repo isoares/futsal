@@ -38,13 +38,28 @@ block content
 					div
 						hr
 					div.form-group
-						div(ng-repeat="p in sumula.players")
-							div.row
-								div.col-xs-6
-									label {{p.name}}
-								div.col-xs-6
-									input.form-control(type="text" ng-model="p.gols" placeholder="Enter {{p.name}} gols")
-									br
+						div.row
+							div.col-xs-12
+								table.table.table-hover
+									thead
+										tr
+											th
+											th Player
+											th Gols
+											th Yellow
+											th Red
+									tbody
+										tr(ng-repeat="p in sumula.players")
+											td
+												input.form-control(type="checkbox" ng-model="p.active")
+											td
+												label {{p.name}}
+											td
+												input.form-control(type="text" ng-model="p.gols" ng-disabled="!p.active")
+											td
+												input.form-control(type="checkbox" ng-model="p.yellow" ng-disabled="!p.active")
+											td
+												input.form-control(type="checkbox" ng-model="p.red" ng-disabled="!p.active")
 					div
 						hr
 						button.btn.btn-default(type="submit") Submit

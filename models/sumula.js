@@ -2,7 +2,9 @@ var mongoose = require('mongoose');
 
 var sumulaPlayers = new mongoose.Schema({
 	idPlayer: { type: mongoose.Schema.Types.ObjectId, ref: 'player' },
-	gols: Number
+	gols: Number,
+	yellow: Boolean,
+	red: Boolean
 });
 
 SumulaSchema = new mongoose.Schema({
