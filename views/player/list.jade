@@ -21,7 +21,12 @@ block content
 				table.table.table-hover
 					thead
 						tr
+							th UPD
 							th Name
 					tbody
 						tr(ng-repeat="p in playerList | filter:query")
+							td
+								//a(href='/updatePlayer/{{p._id}}')
+									//button.btn.btn-link(type="button") UPD
+								button.btn.btn-link(type="button" ng-click="updatePlayer(p._id)") UPD
 							td {{p.name}}

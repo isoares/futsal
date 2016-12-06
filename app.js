@@ -77,6 +77,9 @@ app.post('/login', user.postLogin);
 app.get('/players', player.players);
 app.get('/players/list', player.playersList);
 app.get('/newPlayer', player.newPlayer);
+app.get('/findPlayer/:_id', player.findPlayer);
+app.get('/updatePlayer/:_id', player.newPlayer);
+
 
 app.post('/newPlayer', player.postNewPlayer);
 

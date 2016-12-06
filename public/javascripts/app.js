@@ -51,6 +51,22 @@ angular.module('futsalApp', [])
 	        	$rootScope.info = data;
 	        });
 	    
+	    $scope.updatePlayer = function(_id) {
+	    	$window.location = '/updatePlayer/' + _id;
+	    };
+	    
+	    $scope.findPlayer = function(_id) {
+	    	if (_id != 0) {
+		    	$http.get('/findPlayer/' + _id)
+			        .success(function(data) {
+			            $scope.player = data;
+			        })
+			        .error(function(data) {
+			        	$rootScope.info = data;
+			        });
+	    	}
+	    };
+	    
 	    $scope.createPlayer = function() {
 	        $http.post('/newPlayer', $scope.player)
 	            .success(function(data) {
