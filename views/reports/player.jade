@@ -1,7 +1,7 @@
-extends ../index
+extends ../layout
 
 block page
-	- var menu = 'Reports'
+	- var menu = 'reports'
 
 block content
 	div(ng-controller="rPlayerCont")
@@ -18,12 +18,12 @@ block content
 				table.table.table-hover
 					thead
 						tr
-							th Name
-							th Jogos
-							th Gols
-							th Med. Gols
-							th Yellow
-							th Red
+							th.col-xs-7 Name
+							th.col-xs-1 Jogos
+							th.col-xs-1 Gols
+							th.col-xs-1 Med. Gols
+							th.col-xs-1 Yellow
+							th.col-xs-1 Red
 					tbody
 						tr(ng-repeat="p in rPlayerList | filter:query")
 							td {{p.p[0].name}}

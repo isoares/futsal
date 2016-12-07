@@ -1,4 +1,4 @@
-extends ../index
+extends ../layout
 
 block page
 	- var menu = 'users'
@@ -12,8 +12,8 @@ block content
 		table.table.table-hover
 			thead
 				tr
-					th Name
-					th Username
+					th.col-xs-6 Name
+					th.col-xs-6 Username
 			tbody
 				tr(ng-repeat="userItem in userList")
 					td {{userItem.name}}

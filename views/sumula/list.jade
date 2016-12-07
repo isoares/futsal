@@ -1,4 +1,4 @@
-extends ../index
+extends ../layout
 
 block page
 	- var menu = 'sumulas'
@@ -21,11 +21,11 @@ block content
 				table.table.table-hover
 					thead
 						tr
-							th Sumula
-							th Data
-							th Quadro
-							th Adversario
-							th Resultado
+							th.col-xs-1 ID
+							th.col-xs-2 Data
+							th.col-xs-1 Quadro
+							th.col-xs-4 Adversario
+							th.col-xs-4 Resultado
 					tbody
 						tr(ng-repeat="sumula in sumulaList | filter:query")
 							//td

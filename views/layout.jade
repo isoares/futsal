@@ -2,17 +2,26 @@ doctype html
 html
 	head
 		title= appTitle
-		link(href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css', rel='stylesheet', media='screen')
+		link(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', rel='stylesheet')
 		link(rel='stylesheet', href='/stylesheets/style.css')
+		script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
 		script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js')
 		script(src='/javascripts/app.js')
+		script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js")
 	body(ng-app="futsalApp")
-		.container
+		.container-fluid
 			block page
 			block header
-				div
-					include includes/menu
+				div.row
+					div.col-xs-12
+						include includes/menu
 			.content
-				block content
-				block footer
-					h4 {{info.message}}
+				div.row
+					div.col-xs-12
+						block content
+				br
+				div.row
+					div.col-xs-12
+						block footer
+							div.alert.alert-danger(ng-hide="!info.message")
+								h4 {{info.message}}
