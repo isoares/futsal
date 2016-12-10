@@ -21,7 +21,7 @@ block content
 				table.table.table-hover
 					thead
 						tr
-							th.col-xs-1 ID
+							th.col-xs-1 Detail
 							th.col-xs-2 Data
 							th.col-xs-1 Quadro
 							th.col-xs-4 Adversario
@@ -30,8 +30,10 @@ block content
 						tr(ng-repeat="sumula in sumulaList | filter:query")
 							//td
 								//a(href="#/sumula/{{sumula._id}}") {{$index + 1}}
-							td {{$index + 1}}
+							td
+								button.btn.btn-link(type="button" ng-click="viewSumula(sumula._id)")
+									span.glyphicon.glyphicon-search
 							td {{sumula.data}}
 							td {{sumula.quadro}}
 							td {{sumula.adversario}}
-							td BSF {{sumula.golsFavor}} x {{sumula.golsContra}} {{sumula.adversario}}
+							td BSF {{sumula.goalsPro}} x {{sumula.goalsCon}} {{sumula.adversario}}

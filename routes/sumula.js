@@ -19,12 +19,27 @@ exports.sumulasList = function(req, res) {
 	});
 };
 
+exports.findSumula = function(req, res) {
+	Sumula.findById(req.params._id, function(err, sumula) {
+		if (err) {
+			res.json(err);
+        } else {
+        	res.json(sumula);
+        }
+	});
+};
+
 exports.newSumula = function(req, res) {
 	if (!req.user) {
         res.render('user/login', { user : req.user });
 	}
 	
-	res.render('sumula/new', { user : req.user });
+	var id = req.params._id;
+	if (!id) {
+		id = 0; 	
+	}
+	
+	res.render('sumula/new', { user : req.user, _id : id });
 };
 
 exports.postNewSumula = function(req, res) {
@@ -35,9 +50,8 @@ exports.postNewSumula = function(req, res) {
 			players.push(itemPlayer);
 		}
 	});
-	console.log("3");
 	
-	var sumulaObj = {data: req.body.data, quadro: req.body.quadro, adversario: req.body.adversario, golsFavor: req.body.golsFavor, golsContra: req.body.golsContra, players: players};
+	var sumulaObj = {data: req.body.data, quadro: req.body.quadro, adversario: req.body.adversario, goalsPro: req.body.goalsPro, goalsCon: req.body.goalsCon, players: players};
 	var sumula = new Sumula(sumulaObj);
 	sumula.save(function(err, doc) {
 		if(err || !doc) {

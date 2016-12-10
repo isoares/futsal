@@ -87,6 +87,8 @@ app.post('/newPlayer', player.postNewPlayer);
 app.get('/sumulas', sumula.sumulas);
 app.get('/sumulas/list', sumula.sumulasList);
 app.get('/newSumula', sumula.newSumula);
+app.get('/viewSumula/:_id', sumula.newSumula);
+app.get('/findSumula/:_id', sumula.findSumula);
 
 app.post('/newSumula', sumula.postNewSumula);
 
