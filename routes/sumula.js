@@ -8,7 +8,7 @@ exports.sumulas = function(req, res) {
 	res.render('sumula/list', { user : req.user });
 };
 
-exports.sumulasList = function(req, res) {
+var sumulasList = function(req, res) {
 	Sumula.find({}, function(err, sumulasList) {
 		if (err) {
 			res.json(err);
@@ -18,6 +18,8 @@ exports.sumulasList = function(req, res) {
         }
 	});
 };
+
+exports.sumulasList = sumulasList; 
 
 exports.findSumula = function(req, res) {
 	Sumula.findById(req.params._id, function(err, sumula) {
@@ -61,4 +63,14 @@ exports.postNewSumula = function(req, res) {
 			res.json();
 		}
 	});
+};
+
+exports.deleteSumula = function(req, res) {	
+//	Sumula.findByIdAndRemove(req.params._id, function(err) {
+//		if (err) {
+//			res.json(err);
+//        } else {
+        	res.json(sumulasList());
+//        }
+//	});
 };

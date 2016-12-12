@@ -24,12 +24,11 @@ block content
 							th.col-xs-1 Detail
 							th.col-xs-2 Data
 							th.col-xs-1 Quadro
-							th.col-xs-4 Adversario
+							th.col-xs-3 Adversario
 							th.col-xs-4 Resultado
+							th.col-xs-1 Delete
 					tbody
 						tr(ng-repeat="sumula in sumulaList | filter:query")
-							//td
-								//a(href="#/sumula/{{sumula._id}}") {{$index + 1}}
 							td
 								button.btn.btn-link(type="button" ng-click="viewSumula(sumula._id)")
 									span.glyphicon.glyphicon-search
@@ -37,3 +36,6 @@ block content
 							td {{sumula.quadro}}
 							td {{sumula.adversario}}
 							td BSF {{sumula.goalsPro}} x {{sumula.goalsCon}} {{sumula.adversario}}
+							td
+								button.btn.btn-danger(type="button" ng-click="deleteSumula(sumula._id)")
+									span.glyphicon.glyphicon-remove

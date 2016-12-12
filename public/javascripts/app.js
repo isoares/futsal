@@ -108,6 +108,17 @@ angular.module('futsalApp', [])
         		$rootScope.info = data;
         	});
 	    
+	    $scope.deleteSumula = function(_id) {
+	    	$http.post('/deleteSumula/' + _id)
+	            .success(function(data) {
+	            	$scope.sumulaList = data;
+	            	$rootScope.info = "Apagado com sucesso!";
+	            })
+	            .error(function(data) {
+	            	$rootScope.info = data;
+	            });
+	    };
+	    
 	    $scope.viewSumula = function(_id) {
 	    	$window.location = '/viewSumula/' + _id;
 	    };

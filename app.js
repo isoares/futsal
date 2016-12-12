@@ -91,6 +91,7 @@ app.get('/viewSumula/:_id', sumula.newSumula);
 app.get('/findSumula/:_id', sumula.findSumula);
 
 app.post('/newSumula', sumula.postNewSumula);
+app.post('/deleteSumula/:_id', sumula.deleteSumula);
 
 //reports - player
 app.get('/rPlayers', reports.rPlayers);
