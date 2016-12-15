@@ -4,13 +4,13 @@
 			a(href='/') Home
 		li(class=(menu == 'reports')?'active':'')
 			a(href='/rPlayers') Reports
+		li(class=(menu == 'sumulas')?'active':'')
+			a(href="/sumulas") Sumulas
+		li(class=(menu == 'players')?'active':'')
+			a(href="/players") Players
+		li(class=(menu == 'users')?'active':'')
+			a(href="/users") Users
 		if (user)
-			li(class=(menu == 'sumulas')?'active':'')
-				a(href="/sumulas") Sumulas
-			li(class=(menu == 'players')?'active':'')
-				a(href="/players") Players
-			li(class=(menu == 'users')?'active':'')
-				a(href="/users") Users
 			li
 				a(href="/logout")
 					span.glyphicon.glyphicon-log-out

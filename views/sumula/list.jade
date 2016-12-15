@@ -32,7 +32,7 @@ block content
 							td
 								button.btn.btn-link(type="button" ng-click="viewSumula(sumula._id)")
 									span.glyphicon.glyphicon-search
-							td {{sumula.data}}
+							td {{sumula.data | date:'dd/MM/yyyy'}}
 							td {{sumula.quadro}}
 							td {{sumula.adversario}}
 							td BSF {{sumula.goalsPro}} x {{sumula.goalsCon}} {{sumula.adversario}}

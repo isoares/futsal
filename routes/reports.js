@@ -3,9 +3,9 @@ var Sumula = require('../models/sumula');
 exports.rPlayers = function(req, res) {
 //	if (!req.user) {
 //        res.render('user/login', { user : req.user });
+//	} else {
+		res.render('reports/player', { user : req.user });
 //	}
-	
-	res.render('reports/player', { user : req.user });
 };
 
 exports.rPlayersList = function(req, res) {

@@ -3,9 +3,9 @@ var Sumula = require('../models/sumula');
 exports.sumulas = function(req, res) {
 	if (!req.user) {
         res.render('user/login', { user : req.user });
+	} else {
+		res.render('sumula/list', { user : req.user });
 	}
-	
-	res.render('sumula/list', { user : req.user });
 };
 
 var sumulasList = function(req, res) {
@@ -34,14 +34,14 @@ exports.findSumula = function(req, res) {
 exports.newSumula = function(req, res) {
 	if (!req.user) {
         res.render('user/login', { user : req.user });
+	} else {
+		var id = req.params._id;
+		if (!id) {
+			id = 0; 	
+		}
+		
+		res.render('sumula/new', { user : req.user, _id : id });
 	}
-	
-	var id = req.params._id;
-	if (!id) {
-		id = 0; 	
-	}
-	
-	res.render('sumula/new', { user : req.user, _id : id });
 };
 
 exports.postNewSumula = function(req, res) {
@@ -66,11 +66,11 @@ exports.postNewSumula = function(req, res) {
 };
 
 exports.deleteSumula = function(req, res) {	
-//	Sumula.findByIdAndRemove(req.params._id, function(err) {
-//		if (err) {
-//			res.json(err);
-//        } else {
-        	res.json(sumulasList());
-//        }
-//	});
+	Sumula.findByIdAndRemove(req.params._id, function(err) {
+		if (err) {
+			res.json(err);
+        } else {
+        	sumulasList(req, res);
+        }
+	});
 };

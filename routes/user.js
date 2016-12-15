@@ -19,9 +19,9 @@ exports.logout = function(req, res){
 exports.users = function(req, res) {
 	if (!req.user) {
         res.render('user/login', { user : req.user });
+	} else {	
+		res.render('user/users', { user : req.user });
 	}
-	
-	res.render('user/users', { user : req.user });
 };
 
 exports.usersList = function(req, res) {
@@ -38,9 +38,9 @@ exports.usersList = function(req, res) {
 exports.getRegister = function(req, res){
 	if (!req.user) {
         res.render('user/login', { user : req.user });
+	} else {	
+		res.render('user/register', { user : req.user });
 	}
-	
-	res.render('user/register', { user : req.user });
 };
 
 exports.postRegister = function(req, res){

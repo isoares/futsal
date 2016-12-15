@@ -5,7 +5,7 @@ block page
 
 block content
 	div(ng-controller="sumulaCont")
-		h1 New Sumula
+		h1 Sumula
 		br
 		div.row(ng-init="findSumula('#{_id}')")
 			div.col-xs-12
@@ -14,7 +14,7 @@ block content
 						div.col-xs-6
 							.form-group
 								label(for="sumulaData") Data
-								input.form-control(type="text" ng-model="sumula.data" id="sumulaData" placeholder="Enter sumula data" ng-disabled="view")
+								input.form-control(type="date" ng-model="sumula.data" id="sumulaData" placeholder="Enter sumula data" ng-disabled="view")
 						div.col-xs-6
 							.form-group
 								label(for="sumulaQuadro") Quadro

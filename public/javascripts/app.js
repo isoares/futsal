@@ -81,7 +81,7 @@ angular.module('futsalApp', [])
 	            });
 	    };
 	})
-	.controller('sumulaCont', function($scope, $rootScope, $http, $window) {
+	.controller('sumulaCont', function($scope, $rootScope, $http, $window, $filter) {
 	    $http.get('/sumulas/list')
 	        .success(function(data) {
 	            $scope.sumulaList = data;
@@ -130,6 +130,9 @@ angular.module('futsalApp', [])
 		    	$http.get('/findSumula/' + _id)
 			        .success(function(data) {
 			            $scope.sumula = data;
+			            alert($scope.sumula.data);
+			            //item.date = $filter('date')(date[ item.date, "dd/MM/yyyy"]);
+			            //alert($filter('date')(date[ $scope.sumula.data, "dd/MM/yyyy"]));
 			        })
 			        .error(function(data) {
 			        	$rootScope.info = data;

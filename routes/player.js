@@ -3,9 +3,9 @@ var Player = require('../models/player');
 exports.players = function(req, res) {
 	if (!req.user) {
         res.render('user/login', { user : req.user });
+	} else {	
+		res.render('player/list', { user : req.user });
 	}
-	
-	res.render('player/list', { user : req.user });
 };
 
 exports.playersList = function(req, res) {
@@ -32,14 +32,14 @@ exports.findPlayer = function(req, res) {
 exports.newPlayer = function(req, res) {
 	if (!req.user) {
         res.render('user/login', { user : req.user });
+	} else {	
+		var id = req.params._id;
+		if (!id) {
+			id = 0; 	
+		}
+		
+		res.render('player/new', { user : req.user, _id : id });
 	}
-	
-	var id = req.params._id;
-	if (!id) {
-		id = 0; 	
-	}
-	
-	res.render('player/new', { user : req.user, _id : id });
 };
 
 exports.postNewPlayer = function(req, res){
