@@ -15,20 +15,21 @@ exports.rPlayersList = function(req, res) {
 					$unwind : "$players"
 				},
 				{
+					$lookup: {
+						from: "players",
+						localField: "players.idPlayer",
+						foreignField: "_id",
+						as: "p"
+					}
+				},
+				{
 					$group : {
 						_id: "$players.idPlayer",
+						name: { $first: "$p.name"},
 						gols: { $sum: "$players.gols" },
 						jogos: { $sum: 1 },
 						yellow: { $sum: { $cond: [ "$players.yellow", 1, 0 ] } },
 						red: { $sum: { $cond: [ "$players.red", 1, 0 ] } }
-					}
-				},
-				{
-					$lookup: {
-						from: "players",
-						localField: "_id",
-						foreignField: "_id",
-						as: "p"
 					}
 				},
 				{
@@ -40,6 +41,9 @@ exports.rPlayersList = function(req, res) {
 					res.json(err);
 		        }
 		        else {
+		        	for (i in rPlayersList) {
+		        		rPlayersList[i].name = rPlayersList[i].name[0];
+		        	}
 		        	res.json(rPlayersList);
 		        }
 			}

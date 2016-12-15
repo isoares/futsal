@@ -22,13 +22,51 @@ var sumulasList = function(req, res) {
 exports.sumulasList = sumulasList; 
 
 exports.findSumula = function(req, res) {
-	Sumula.findById(req.params._id, function(err, sumula) {
-		if (err) {
-			res.json(err);
-        } else {
-        	res.json(sumula);
-        }
-	});
+//	Sumula.findById(req.params._id, function(err, sumula) {
+//		if (err) {
+//			res.json(err);
+//        } else {
+//        	res.json(sumula);
+//        }
+//	});
+	var ObjectID = require("mongodb").ObjectID;
+	var o_id = new ObjectID(req.params._id);
+	Sumula.aggregate(
+			[
+				{
+					$match: {_id: o_id} 
+				},
+				{
+					$unwind : "$players"
+				},
+				{
+					$lookup: {
+						from: "players",
+						localField: "players.idPlayer",
+						foreignField: "_id",
+						as: "p"
+					}
+				}
+			],
+			function(err, sumula) {
+				if (err) {
+					res.json(err);
+		        }
+		        else {
+		        	var data = sumula[0];
+		        	data.players.name = data.p[0].name;
+		        	data.players = [data.players];		        	
+		        	
+		        	for (i = 1; i < sumula.length; i++) {
+		        		sumula[i].players.name = sumula[i].p[0].name;
+		        		data.players.push(sumula[i].players);
+		        	}
+		        	
+		        	res.json(data);
+		        }
+			}
+		);
+	
 };
 
 exports.newSumula = function(req, res) {
