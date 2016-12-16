@@ -5,14 +5,14 @@ block page
 
 block content
 	div(ng-controller="sumulaCont")
-		h1 Sumula
+		h1 Games
 		div.row
 			div.col-xs-5
 				a(href="/newSumula").btn.btn-default
 					span.glyphicon.glyphicon-plus
 					|  New
 			div.col-xs-7
-				input.form-control(type="text" ng-model="query" placeholder="Search for a sumula")
+				input.form-control(type="text" ng-model="query" placeholder="Search for a game")
 		div.row
 			div.col-xs-12
 				hr
@@ -22,10 +22,10 @@ block content
 					thead
 						tr
 							th.col-xs-1 Detail
-							th.col-xs-2 Data
-							th.col-xs-1 Quadro
-							th.col-xs-3 Adversario
-							th.col-xs-4 Resultado
+							th.col-xs-2 Date
+							th.col-xs-1 Team
+							th.col-xs-3 Opponent
+							th.col-xs-4 Result
 							th.col-xs-1 Delete
 					tbody
 						tr(ng-repeat="sumula in sumulaList | filter:query")

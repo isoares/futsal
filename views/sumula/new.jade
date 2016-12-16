@@ -5,7 +5,7 @@ block page
 
 block content
 	div(ng-controller="sumulaCont")
-		h1 Sumula
+		h1 Games
 		br
 		div.row(ng-init="findSumula('#{_id}')")
 			div.col-xs-12
@@ -13,28 +13,29 @@ block content
 					div.row
 						div.col-xs-6
 							.form-group
-								label(for="sumulaData") Data
+								label(for="sumulaData") Date
 								input.form-control(type="date" ng-model="sumula.data" id="sumulaData" ng-disabled="view" required)
 						div.col-xs-6
 							.form-group
-								label(for="sumulaQuadro") Quadro
-								input.form-control(type="text" ng-model="sumula.quadro" id="sumulaQuadro" placeholder="Quadro" ng-disabled="view" required)
+								label(for="sumulaQuadro") Team
+								input.form-control(type="text" ng-model="sumula.quadro" id="sumulaQuadro" placeholder="Team" ng-disabled="view" required)
 					div.row
 						div.col-xs-6
-							label BSF Futsal
+							label Team
+							h5 Team Name
 						div.col-xs-6
 							.form-group
-								label(for="sumulaAdversario") Adversario
-								input.form-control(type="text" ng-model="sumula.adversario" id="sumulaAdversario" placeholder="Adversario" ng-disabled="view" required)
+								label(for="sumulaAdversario") Opponent
+								input.form-control(type="text" ng-model="sumula.adversario" id="sumulaAdversario" placeholder="Opponent" ng-disabled="view" required)
 					div.row
 						div.col-xs-6
 							.form-group
-								label(for="sumulaGolsFavor") Gols Favor
-								input.form-control(type="text" ng-model="sumula.goalsPro" id="sumulaGolsFavor" placeholder="Gols Favor" ng-disabled="view" required)
+								label(for="sumulaGolsFavor") Goals Pro
+								input.form-control(type="text" ng-model="sumula.goalsPro" id="sumulaGolsFavor" placeholder="Goals Pro" ng-disabled="view" required)
 						div.col-xs-6
 							.form-group
-								label(for="sumulaGolsContra") Gols Contra
-								input.form-control(type="text" ng-model="sumula.goalsCon" id="sumulaGolsContra" placeholder="Gols Contra" ng-disabled="view" required)
+								label(for="sumulaGolsContra") Goals Con
+								input.form-control(type="text" ng-model="sumula.goalsCon" id="sumulaGolsContra" placeholder="Goals Con" ng-disabled="view" required)
 					div
 						hr
 					div.form-group
@@ -45,7 +46,7 @@ block content
 										tr
 											th.col-xs-1
 											th.col-xs-8 Player
-											th.col-xs-1 Gols
+											th.col-xs-1 Goals
 											th.col-xs-1 Yellow
 											th.col-xs-1 Red
 									tbody
