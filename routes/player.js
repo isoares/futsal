@@ -8,7 +8,7 @@ exports.players = function(req, res) {
 	}
 };
 
-exports.playersList = function(req, res) {
+var playersList = function(req, res) {
 	Player.find({}, function(err, playersList) {
 		if (err) {
 			res.json(err);
@@ -18,6 +18,8 @@ exports.playersList = function(req, res) {
         }
 	});
 };
+
+exports.playersList = playersList; 
 
 exports.findPlayer = function(req, res) {
 	Player.findById(req.params._id, function(err, player) {
@@ -70,6 +72,16 @@ exports.postNewPlayer = function(req, res){
 					res.json();
 				}
 			});
+        }
+	});
+};
+
+exports.deletePlayer = function(req, res) {	
+	Player.findByIdAndRemove(req.params._id, function(err) {
+		if (err) {
+			res.json(err);
+        } else {
+        	playersList(req, res);
         }
 	});
 };

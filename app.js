@@ -80,8 +80,8 @@ app.get('/newPlayer', player.newPlayer);
 app.get('/findPlayer/:_id', player.findPlayer);
 app.get('/updatePlayer/:_id', player.newPlayer);
 
-
 app.post('/newPlayer', player.postNewPlayer);
+app.post('/deletePlayer/:_id', player.deletePlayer);
 
 // sumula
 app.get('/sumulas', sumula.sumulas);

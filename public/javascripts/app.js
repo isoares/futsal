@@ -21,10 +21,7 @@ angular.module('futsalApp', [])
 	            	}
 	            })
 	            .error(function(data) {
-	            	//$rootScope.info = data;
-	            	//$rootScope.info = data;
 	            	$rootScope.info = {message: data};
-	            	//$rootScope.info.message = data;
 	            });
 	    };
 	    
@@ -50,6 +47,17 @@ angular.module('futsalApp', [])
 	        .error(function(data) {
 	        	$rootScope.info = data;
 	        });
+	    
+	    $scope.deletePlayer = function(_id) {
+	    	$http.post('/deletePlayer/' + _id)
+	            .success(function(data) {
+	            	$scope.playerList = data;
+	            	$rootScope.success = {message: "Apagado com sucesso!"};
+	            })
+	            .error(function(data) {
+	            	$rootScope.info = data;
+	            });
+	    };
 	    
 	    $scope.updatePlayer = function(_id) {
 	    	$window.location = '/updatePlayer/' + _id;
@@ -112,7 +120,7 @@ angular.module('futsalApp', [])
 	    	$http.post('/deleteSumula/' + _id)
 	            .success(function(data) {
 	            	$scope.sumulaList = data;
-	            	$rootScope.info = "Apagado com sucesso!";
+	            	$rootScope.success = {message: "Apagado com sucesso!"};
 	            })
 	            .error(function(data) {
 	            	$rootScope.info = data;
