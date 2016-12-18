@@ -20,6 +20,8 @@ var mongoose = require('mongoose');
 var LocalStrategy = require('passport-local').Strategy;
 
 var app = express();
+var server = http.createServer(app);
+
 app.locals.appTitle = "Futsal";
 
 // all environments
@@ -113,6 +115,6 @@ app.get('/rPlayers', reports.rPlayers);
 app.get('/rPlayers/list', reports.rPlayersList);
 
 
-http.createServer(app).listen(app.get('port'), app.get('ip'), function(){
+server.listen(app.get('port'), app.get('ip'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
