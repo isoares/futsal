@@ -7,7 +7,7 @@ var express = require('express')
   , routes = require('./routes')
   , db = require('./routes/_db')
   , user = require('./routes/user')
-  , playerRoute = require('./routes/player')
+  , player = require('./routes/player')
   , sumula = require('./routes/sumula')
   , reports = require('./routes/reports')
   , http = require('http')
@@ -95,14 +95,14 @@ app.post('/register', user.postRegister);
 app.post('/login', user.postLogin);
 
 // player
-app.get('/players', playerRoute.players);
-app.get('/players/list', playerRoute.playersList);
-app.get('/newPlayer', playerRoute.newPlayer);
-app.get('/findPlayer/:_id', playerRoute.findPlayer);
-app.get('/updatePlayer/:_id', playerRoute.newPlayer);
+app.get('/players', player.players);
+app.get('/players/list', player.playersList);
+app.get('/newPlayer', player.newPlayer);
+app.get('/findPlayer/:_id', player.findPlayer);
+app.get('/updatePlayer/:_id', player.newPlayer);
 
-app.post('/newPlayer', playerRoute.postNewPlayer);
-app.post('/deletePlayer/:_id', playerRoute.deletePlayer);
+app.post('/newPlayer', player.postNewPlayer);
+app.post('/deletePlayer/:_id', player.deletePlayer);
 
 // sumula
 app.get('/sumulas', sumula.sumulas);
