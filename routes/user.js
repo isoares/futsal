@@ -1,5 +1,8 @@
+var mongoose = require('mongoose');
+//var dbConn = mongoose.connection;
+//var Account = require('../models/account')(mongoose,dbConn);
+var Account = mongoose.model('Account');
 var passport = require('passport');
-var Account = require('../models/account');
 
 exports.getLogin = function(req, res){
 	res.render('user/login', { user : req.user });

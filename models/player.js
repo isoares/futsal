@@ -1,7 +1,8 @@
-var mongoose = require('mongoose');
+module.exports = function (mongoose,  dbConn) {
 
-PlayerSchema = new mongoose.Schema({
-	name: String
-});
-
-module.exports = mongoose.model('Player', PlayerSchema);
+	PlayerSchema = new mongoose.Schema({
+		name: String
+	});
+	
+	return dbConn.model('Player', PlayerSchema);
+};

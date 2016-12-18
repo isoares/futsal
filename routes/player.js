@@ -1,4 +1,7 @@
-var Player = require('../models/player');
+var mongoose = require('mongoose');
+//var dbConn = mongoose.connection;
+//var Player = require('../models/player')(mongoose,dbConn);
+var Player = mongoose.model('Player');
 
 exports.players = function(req, res) {
 	if (!req.user) {

@@ -1,4 +1,7 @@
-var Sumula = require('../models/sumula');
+var mongoose = require('mongoose');
+//var dbConn = mongoose.connection;
+//var Sumula = require('../models/sumula')(mongoose,dbConn);
+var Sumula = mongoose.model('Sumula');
 
 exports.rPlayers = function(req, res) {
 //	if (!req.user) {
