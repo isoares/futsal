@@ -14,7 +14,7 @@ exports.players = function(req, res) {
 };
 
 var playersList = function(req, res) {
-	Player.find({}, function(err, playersList) {
+	Player.find({}).select('-photo').exec(function(err, playersList) {
 		if (err) {
 			res.json(err);
         }
@@ -27,15 +27,13 @@ var playersList = function(req, res) {
 exports.playersList = playersList;
 
 exports.getPlayerPhoto = function(req, res){
-	Player.findById(req.params.id, function(err, player) {
+	Player.findById(req.params.id).select('photo').exec(function(err, player) {
 		if (err) {
 			res.writeHead(200, {'Content-Type':  'image/png' });
 			res.end();
         } else {
-        	if (player) {
-        		res.writeHead(200, {'Content-Type':  'image/png' });
-            	res.end(player.photo.data);
-        	}        	
+    		res.writeHead(200, {'Content-Type':  'image/png' });
+        	res.end(player.photo.data);     	
         }
 	});
 }
@@ -83,7 +81,7 @@ exports.postNewPlayer = function(req, res){
         	}        	
 			player.name = req.body.name;
 			
-			player.photo.data = fs.readFileSync('./public/image.png');
+			player.photo.data = fs.readFileSync('./public/person.png');
 			player.photo.contentType = 'image/png';
 
 			player.save(function(err, doc) {
