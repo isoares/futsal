@@ -22,13 +22,16 @@ block content
 					thead
 						tr
 							th.col-xs-1 Edit
-							th.col-xs-10 Name
+							th.col-xs-1 Photo
+							th.col-xs-9 Name
 							th.col-xs-1 Delete
 					tbody
 						tr(ng-repeat="p in playerList | filter:query")
 							td
 								button.btn.btn-link(type="button" ng-click="updatePlayer(p._id)")
 									span.glyphicon.glyphicon-edit
+							td
+								img(src="/players/getPlayerPhoto/{{p._id}}" width="100%")
 							td {{p.name}}
 							td
 								button.btn.btn-danger(type="button" ng-click="deletePlayer(p._id)")

@@ -4,8 +4,8 @@
  */
 
 var express = require('express')
-  , routes = require('./routes')
   , db = require('./routes/_db')
+  , index = require('./routes/index')
   , user = require('./routes/user')
   , player = require('./routes/player')
   , sumula = require('./routes/sumula')
@@ -82,7 +82,7 @@ if ('development' == app.get('env')) {
 //passport.serializeUser(Account.serializeUser());
 //passport.deserializeUser(Account.deserializeUser());
 
-app.get('/', routes.index);
+app.get('/', index.index);
 
 // user
 app.get('/register', user.getRegister);
@@ -97,6 +97,7 @@ app.post('/login', user.postLogin);
 // player
 app.get('/players', player.players);
 app.get('/players/list', player.playersList);
+app.get('/players/getPlayerPhoto/:id', player.getPlayerPhoto);
 app.get('/newPlayer', player.newPlayer);
 app.get('/findPlayer/:_id', player.findPlayer);
 app.get('/updatePlayer/:_id', player.newPlayer);

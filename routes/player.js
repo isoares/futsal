@@ -3,6 +3,8 @@ var mongoose = require('mongoose');
 //var Player = require('../models/player')(mongoose,dbConn);
 var Player = mongoose.model('Player');
 
+var fs = require('fs');
+
 exports.players = function(req, res) {
 	if (!req.user) {
         res.render('user/login', { user : req.user });
@@ -22,7 +24,21 @@ var playersList = function(req, res) {
 	});
 };
 
-exports.playersList = playersList; 
+exports.playersList = playersList;
+
+exports.getPlayerPhoto = function(req, res){
+	Player.findById(req.params.id, function(err, player) {
+		if (err) {
+			res.writeHead(200, {'Content-Type':  'image/png' });
+			res.end();
+        } else {
+        	if (player) {
+        		res.writeHead(200, {'Content-Type':  'image/png' });
+            	res.end(player.photo.data);
+        	}        	
+        }
+	});
+}
 
 exports.findPlayer = function(req, res) {
 	Player.findById(req.params._id, function(err, player) {
@@ -66,6 +82,9 @@ exports.postNewPlayer = function(req, res){
         		player = new Player();
         	}        	
 			player.name = req.body.name;
+			
+			player.photo.data = fs.readFileSync('./public/image.png');
+			player.photo.contentType = 'image/png';
 
 			player.save(function(err, doc) {
 				if(err || !doc) {
