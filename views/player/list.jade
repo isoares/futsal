@@ -22,7 +22,7 @@ block content
 					thead
 						tr
 							th.col-xs-1 Edit
-							th.col-xs-1 Photo
+							th.col-xs-1
 							th.col-xs-9 Name
 							th.col-xs-1 Delete
 					tbody
@@ -31,7 +31,7 @@ block content
 								button.btn.btn-link(type="button" ng-click="updatePlayer(p._id)")
 									span.glyphicon.glyphicon-edit
 							td
-								img(src="/players/getPlayerPhoto/{{p._id}}" width="80%")
+								img(src="/players/getPlayerPhoto/{{p._id}}" width="70%")
 							td {{p.name}}
 							td
 								button.btn.btn-danger(type="button" ng-click="deletePlayer(p._id)")

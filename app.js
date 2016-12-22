@@ -11,7 +11,8 @@ var express = require('express')
   , sumula = require('./routes/sumula')
   , reports = require('./routes/reports')
   , http = require('http')
-  , path = require('path');
+  , path = require('path')
+  , multer  = require('multer');
 
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -98,11 +99,12 @@ app.post('/login', user.postLogin);
 app.get('/players', player.players);
 app.get('/players/list', player.playersList);
 app.get('/players/getPlayerPhoto/:id', player.getPlayerPhoto);
+app.get('/players/getPlayerPhoto', player.getPlayerPhotoDefault);
 app.get('/newPlayer', player.newPlayer);
 app.get('/findPlayer/:_id', player.findPlayer);
 app.get('/updatePlayer/:_id', player.newPlayer);
 
-app.post('/newPlayer', player.postNewPlayer);
+app.post('/newPlayer', multer().single('file'), player.postNewPlayer);
 app.post('/deletePlayer/:_id', player.deletePlayer);
 
 // sumula

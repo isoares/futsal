@@ -9,7 +9,12 @@ block content
 		br
 		div.row(ng-init="findPlayer('#{_id}')")
 			div.col-xs-12
-				form(role="form", ng-submit="createPlayer()" style='max-width: 300px;')
+				form(role="form", ng-submit="createPlayer()" style="max-width: 300px;" enctype="multipart/form-data")
+					.form-group
+						img(src="/players/getPlayerPhoto/{{player._id}}")
+					.form-group
+						label(for="playerPhoto") Photo:
+						input.form-control(type="file" id="playerPhoto")
 					.form-group
 						label(for="playerName") Name:
 						input.form-control(type="text" ng-model="player.name" id="playerName" placeholder="Name" required)

@@ -26,20 +26,31 @@ var playersList = function(req, res) {
 
 exports.playersList = playersList;
 
+exports.getPlayerPhotoDefault = function(req, res){
+	res.writeHead(200, {'Content-Type': 'image/png'});
+	res.end(fs.readFileSync('./public/images/photo.png'));
+};
+
 exports.getPlayerPhoto = function(req, res){
 	Player.findById(req.params.id).select('photo').exec(function(err, player) {
 		if (err) {
-			res.writeHead(200, {'Content-Type':  'image/png' });
+			res.writeHead(200, {'Content-Type': 'image/png'});
+//	    		res.end(fs.readFileSync('./public/images/photo.png'));
 			res.end();
         } else {
-    		res.writeHead(200, {'Content-Type':  'image/png' });
-        	res.end(player.photo.data);     	
+        	if (player) {
+        		res.writeHead(200, {'Content-Type': player.photo.contentType});
+            	res.end(player.photo.data);
+        	} else {
+        		res.writeHead(200, {'Content-Type': 'image/png'});
+        		res.end(fs.readFileSync('./public/images/photo.png'));
+        	}
         }
 	});
 }
 
 exports.findPlayer = function(req, res) {
-	Player.findById(req.params._id, function(err, player) {
+	Player.findById(req.params._id).select('-photo').exec(function(err, player) {
 		if (err) {
 			res.json(err);
         } else {
@@ -78,11 +89,19 @@ exports.postNewPlayer = function(req, res){
         } else {
         	if (!player) {
         		player = new Player();
-        	}        	
+        		
+        		if (!req.file) {
+        			player.photo.data = fs.readFileSync('./public/images/photo.png');
+        			player.photo.contentType = 'image/png';
+        		}
+        	}
+        	
 			player.name = req.body.name;
 			
-			player.photo.data = fs.readFileSync('./public/person.png');
-			player.photo.contentType = 'image/png';
+			if (req.file) {
+				player.photo.data = req.file.buffer;
+				player.photo.contentType = req.file.mimetype;
+			}
 
 			player.save(function(err, doc) {
 				if(err || !doc) {

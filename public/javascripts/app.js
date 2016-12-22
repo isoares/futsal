@@ -75,8 +75,20 @@ angular.module('futsalApp', [])
 	    	}
 	    };
 	    
-	    $scope.createPlayer = function() {
-	        $http.post('/newPlayer', $scope.player)
+	    $scope.createPlayer = function() {	    	
+	    	var file = document.getElementById('playerPhoto').files[0];
+	        var fd = new FormData();
+	        fd.append('file', file);
+	        if ($scope.player._id) {
+	        	fd.append('_id', $scope.player._id);
+	        }	        
+	        fd.append('name', $scope.player.name);
+	        
+	        $http.post('/newPlayer', fd, //$scope.player,
+	        		 {
+		           transformRequest: angular.identity,
+		           headers: {'Content-Type': undefined}
+		        })
 	            .success(function(data) {
 	            	if (data == '') {
 	            		$window.location = '/players';
