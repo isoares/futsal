@@ -45,7 +45,8 @@ block content
 									thead
 										tr
 											th.col-xs-1
-											th.col-xs-8 Player
+											th.col-xs-1
+											th.col-xs-7 Player
 											th.col-xs-1 Goals
 											th.col-xs-1 Yellow
 											th.col-xs-1 Red
@@ -53,6 +54,8 @@ block content
 										tr(ng-repeat="p in sumula.players")
 											td
 												input.form-control(type="checkbox" ng-model="p.active" ng-disabled="view")
+											td
+												img(src="/players/getPlayerPhoto/{{p.idPlayer}}" width="70%")
 											td
 												label {{p.name}}
 											td
