@@ -5,68 +5,70 @@ block page
 
 block content
 	div(ng-controller="sumulaCont")
-		h1 Games
-		br
-		div.row(ng-init="findSumula('#{_id}')")
-			div.col-xs-12
-				form(role="form", ng-submit="createSumula()")
-					div.row
-						div.col-xs-6
-							.form-group
-								label(for="sumulaData") Date
-								input.form-control(type="date" ng-model="sumula.data" id="sumulaData" ng-disabled="view" required)
-						div.col-xs-6
-							.form-group
-								label(for="sumulaQuadro") Team
-								input.form-control(type="text" ng-model="sumula.quadro" id="sumulaQuadro" placeholder="Team" ng-disabled="view" required)
-					div.row
-						div.col-xs-6
-							label Team
-							h5 Team Name
-						div.col-xs-6
-							.form-group
-								label(for="sumulaAdversario") Opponent
-								input.form-control(type="text" ng-model="sumula.adversario" id="sumulaAdversario" placeholder="Opponent" ng-disabled="view" required)
-					div.row
-						div.col-xs-6
-							.form-group
-								label(for="sumulaGolsFavor") Goals Pro
-								input.form-control(type="text" ng-model="sumula.goalsPro" id="sumulaGolsFavor" placeholder="Goals Pro" ng-disabled="view" required)
-						div.col-xs-6
-							.form-group
-								label(for="sumulaGolsContra") Goals Con
-								input.form-control(type="text" ng-model="sumula.goalsCon" id="sumulaGolsContra" placeholder="Goals Con" ng-disabled="view" required)
-					div
-						hr
-					div.form-group
+		div.jumbotron
+			div.container-fluid
+				h2 Games
+		div.container-fluid
+			div.row(ng-init="findSumula('#{_id}')")
+				div.col-xs-12
+					form(role="form", ng-submit="createSumula()")
 						div.row
-							div.col-xs-12
-								table.table.table-hover
-									thead
-										tr
-											th.col-xs-1
-											th.col-xs-1
-											th.col-xs-7 Player
-											th.col-xs-1 Goals
-											th.col-xs-1 Yellow
-											th.col-xs-1 Red
-									tbody
-										tr(ng-repeat="p in sumula.players")
-											td
-												input.form-control(type="checkbox" ng-model="p.active" ng-disabled="view")
-											td
-												img(src="/players/getPlayerPhoto/{{p.idPlayer}}" width="70%")
-											td
-												label {{p.name}}
-											td
-												input.form-control(type="text" ng-model="p.gols" ng-disabled="!p.active")
-											td
-												input.form-control(type="checkbox" ng-model="p.yellow" ng-disabled="!p.active")
-											td
-												input.form-control(type="checkbox" ng-model="p.red" ng-disabled="!p.active")
-					div
-						hr
-						button.btn.btn-default(type="submit" ng-hide="view") Submit
-						&nbsp;
-						a(href="/sumulas" ng-hide="view").button.btn.btn-primary Cancel
-						a(href="/sumulas" ng-hide="!view").button.btn.btn-primary Back
+							div.col-xs-6
+								.form-group
+									label(for="sumulaData") Date
+									input.form-control(type="date" ng-model="sumula.data" id="sumulaData" ng-disabled="view" required)
+							div.col-xs-6
+								.form-group
+									label(for="sumulaQuadro") Team
+									input.form-control(type="text" ng-model="sumula.quadro" id="sumulaQuadro" placeholder="Team" ng-disabled="view" required)
+						div.row
+							div.col-xs-6
+								label Team
+								h5 Team Name
+							div.col-xs-6
+								.form-group
+									label(for="sumulaAdversario") Opponent
+									input.form-control(type="text" ng-model="sumula.adversario" id="sumulaAdversario" placeholder="Opponent" ng-disabled="view" required)
+						div.row
+							div.col-xs-6
+								.form-group
+									label(for="sumulaGolsFavor") Goals Pro
+									input.form-control(type="text" ng-model="sumula.goalsPro" id="sumulaGolsFavor" placeholder="Goals Pro" ng-disabled="view" required)
+							div.col-xs-6
+								.form-group
+									label(for="sumulaGolsContra") Goals Con
+									input.form-control(type="text" ng-model="sumula.goalsCon" id="sumulaGolsContra" placeholder="Goals Con" ng-disabled="view" required)
+						div
+							hr
+						div.form-group
+							div.row
+								div.col-xs-12
+									table.table.table-hover
+										thead
+											tr
+												th.col-xs-1
+												th.col-xs-1
+												th.col-xs-7 Player
+												th.col-xs-1 Goals
+												th.col-xs-1 Yellow
+												th.col-xs-1 Red
+										tbody
+											tr(ng-repeat="p in sumula.players")
+												td
+													input.form-control(type="checkbox" ng-model="p.active" ng-disabled="view")
+												td
+													img(src="/players/getPlayerPhoto/{{p.idPlayer}}" width="70%")
+												td
+													label {{p.name}}
+												td
+													input.form-control(type="text" ng-model="p.gols" ng-disabled="!p.active")
+												td
+													input.form-control(type="checkbox" ng-model="p.yellow" ng-disabled="!p.active")
+												td
+													input.form-control(type="checkbox" ng-model="p.red" ng-disabled="!p.active")
+						div
+							hr
+							button.btn.btn-default(type="submit" ng-hide="view") Submit
+							&nbsp;
+							a(href="/sumulas" ng-hide="view").button.btn.btn-primary Cancel
+							a(href="/sumulas" ng-hide="!view").button.btn.btn-primary Back

@@ -5,34 +5,34 @@ block page
 
 block content
 	div(ng-controller="playerCont")
-		h1 Player
-		div.row
-			div.col-xs-5
-				a(href="/newPlayer").btn.btn-default
-					span.glyphicon.glyphicon-plus
-					|  New
-			div.col-xs-7
-				input.form-control(type="text" ng-model="query" placeholder="Search for a player")
-		div.row
-			div.col-xs-12
-				hr
-		div.row
-			div.col-xs-12
-				table.table.table-hover
-					thead
-						tr
-							th.col-xs-1 Edit
-							th.col-xs-1
-							th.col-xs-9 Name
-							th.col-xs-1 Delete
-					tbody
-						tr(ng-repeat="p in playerList | filter:query")
-							td
-								button.btn.btn-link(type="button" ng-click="updatePlayer(p._id)")
-									span.glyphicon.glyphicon-edit
-							td
-								img(src="/players/getPlayerPhoto/{{p._id}}" width="70%")
-							td {{p.name}}
-							td
-								button.btn.btn-danger(type="button" ng-click="deletePlayer(p._id)")
-									span.glyphicon.glyphicon-remove
+		div.jumbotron
+			div.container-fluid
+				h2 Player
+				div.row
+					div.col-xs-5
+						a(href="/newPlayer").btn.btn-default
+							span.glyphicon.glyphicon-plus
+							|  New
+					div.col-xs-7
+						input.form-control(type="text" ng-model="query" placeholder="Search for a player")
+		div.container-fluid
+			div.row
+				div.col-xs-12
+					table.table.table-hover
+						thead
+							tr
+								th.col-xs-1 Edit
+								th.col-xs-1
+								th.col-xs-9 Name
+								th.col-xs-1 Delete
+						tbody
+							tr(ng-repeat="p in playerList | filter:query")
+								td
+									button.btn.btn-link(type="button" ng-click="updatePlayer(p._id)")
+										span.glyphicon.glyphicon-edit
+								td
+									img(src="/players/getPlayerPhoto/{{p._id}}" width="70%")
+								td {{p.name}}
+								td
+									button.btn.btn-danger(type="button" ng-click="deletePlayer(p._id)")
+										span.glyphicon.glyphicon-remove

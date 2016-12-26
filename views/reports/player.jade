@@ -5,33 +5,33 @@ block page
 
 block content
 	div(ng-controller="rPlayerCont")
-		h1 Player Stats
-		div.row
-			div.col-xs-5
-			div.col-xs-7
-				input.form-control(type="text" ng-model="query" placeholder="Search for a player")
-		div.row
-			div.col-xs-12
-				hr
-		div.row
-			div.col-xs-12
-				table.table.table-hover
-					thead
-						tr
-							th.col-xs-1
-							th.col-xs-6 Name
-							th.col-xs-1 Games
-							th.col-xs-1 Goals
-							th.col-xs-1 Goals Av.
-							th.col-xs-1 Yellow
-							th.col-xs-1 Red
-					tbody
-						tr(ng-repeat="p in rPlayerList | filter:query")
-							td
-								img(src="/players/getPlayerPhoto/{{p._id}}" width="70%")
-							td {{p.name}}
-							td {{p.jogos}}
-							td {{p.gols}}
-							td {{p.gols / p.jogos | number:2}}
-							td {{p.yellow}}
-							td {{p.red}}
+		div.jumbotron
+			div.container-fluid
+				h2 Player Stats
+				div.row
+					div.col-xs-5
+					div.col-xs-7
+						input.form-control(type="text" ng-model="query" placeholder="Search for a player")
+		div.container-fluid
+			div.row
+				div.col-xs-12
+					table.table.table-hover
+						thead
+							tr
+								th.col-xs-1
+								th.col-xs-6 Name
+								th.col-xs-1 Games
+								th.col-xs-1 Goals
+								th.col-xs-1 Goals Av.
+								th.col-xs-1 Yellow
+								th.col-xs-1 Red
+						tbody
+							tr(ng-repeat="p in rPlayerList | filter:query")
+								td
+									img(src="/players/getPlayerPhoto/{{p._id}}" width="70%")
+								td {{p.name}}
+								td {{p.jogos}}
+								td {{p.gols}}
+								td {{p.gols / p.jogos | number:2}}
+								td {{p.yellow}}
+								td {{p.red}}

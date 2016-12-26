@@ -1,22 +1,32 @@
 .menu
-	ul.nav.nav-pills.nav-justified
-		li(class=(menu == 'index')?'active':'')
-			a(href='/') Team Stats
-		li(class=(menu == 'reports')?'active':'')
-			a(href='/rPlayers') Players Stats
-		li(class=(menu == 'sumulas')?'active':'')
-			a(href="/sumulas") Games
-		li(class=(menu == 'players')?'active':'')
-			a(href="/players") Players
-		li(class=(menu == 'users')?'active':'')
-			a(href="/users") Users
-		if (user)
-			li
-				a(href="/logout")
-					span.glyphicon.glyphicon-log-out
-					|	Log out (#{user.username})
-		else
-			li(class=(menu == 'login')?'active':'')
-				a(href='/login')
-					span.glyphicon.glyphicon-log-in
-					|	Log in
+	nav.navbar.navbar-default.navbar-fixed-top
+		div.container-fluid
+			div.navbar-header
+				button.navbar-toggle(type="button" data-toggle="collapse" data-target="#myNavbar")
+					span.icon-bar
+					span.icon-bar
+					span.icon-bar
+				a(class="navbar-brand" href="/") Logo
+			div.collapse.navbar-collapse(id="myNavbar")
+				ul.nav.navbar-nav
+					li(class=(menu == 'index')?'active':'')
+						a(href='/') Team Stats
+					li(class=(menu == 'reports')?'active':'')
+						a(href='/rPlayers') Players Stats
+				ul.nav.navbar-nav.navbar-right
+					if (user)
+						li(class=(menu == 'sumulas')?'active':'')
+							a(href="/sumulas") Games
+						li(class=(menu == 'players')?'active':'')
+							a(href="/players") Players
+						li(class=(menu == 'users')?'active':'')
+							a(href="/users") Users
+						li
+							a(href="/logout")
+								span.glyphicon.glyphicon-log-out
+								|	Log out (#{user.username})
+					else
+						li(class=(menu == 'login')?'active':'')
+							a(href='/login')
+								span.glyphicon.glyphicon-log-in
+								|	Log in

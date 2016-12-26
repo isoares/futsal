@@ -5,16 +5,19 @@ block page
 
 block content
 	div(ng-controller="userCont")
-		h1 Users
-		a(href="/register").btn.btn-default
-			span.glyphicon.glyphicon-plus
-			|  New
-		table.table.table-hover
-			thead
-				tr
-					th.col-xs-6 Name
-					th.col-xs-6 Username
-			tbody
-				tr(ng-repeat="userItem in userList")
-					td {{userItem.name}}
-					td {{userItem.username}}
+		div.jumbotron
+			div.container-fluid
+				h2 Users
+				a(href="/register").btn.btn-default
+					span.glyphicon.glyphicon-plus
+					|  New
+		div.container-fluid
+			table.table.table-hover
+				thead
+					tr
+						th.col-xs-6 Name
+						th.col-xs-6 Username
+				tbody
+					tr(ng-repeat="userItem in userList")
+						td {{userItem.name}}
+						td {{userItem.username}}

@@ -5,37 +5,37 @@ block page
 
 block content
 	div(ng-controller="sumulaCont")
-		h1 Games
-		div.row
-			div.col-xs-5
-				a(href="/newSumula").btn.btn-default
-					span.glyphicon.glyphicon-plus
-					|  New
-			div.col-xs-7
-				input.form-control(type="text" ng-model="query" placeholder="Search for a game")
-		div.row
-			div.col-xs-12
-				hr
-		div.row
-			div.col-xs-12
-				table.table.table-hover
-					thead
-						tr
-							th.col-xs-1 Detail
-							th.col-xs-2 Date
-							th.col-xs-1 Team
-							th.col-xs-3 Opponent
-							th.col-xs-4 Result
-							th.col-xs-1 Delete
-					tbody
-						tr(ng-repeat="sumula in sumulaList | filter:query")
-							td
-								button.btn.btn-link(type="button" ng-click="viewSumula(sumula._id)")
-									span.glyphicon.glyphicon-search
-							td {{sumula.data | date:'dd/MM/yyyy'}}
-							td {{sumula.quadro}}
-							td {{sumula.adversario}}
-							td BSF {{sumula.goalsPro}} x {{sumula.goalsCon}} {{sumula.adversario}}
-							td
-								button.btn.btn-danger(type="button" ng-click="deleteSumula(sumula._id)")
-									span.glyphicon.glyphicon-remove
+		div.jumbotron
+			div.container-fluid
+				h2 Games
+				div.row
+					div.col-xs-5
+						a(href="/newSumula").btn.btn-default
+							span.glyphicon.glyphicon-plus
+							|  New
+					div.col-xs-7
+						input.form-control(type="text" ng-model="query" placeholder="Search for a game")
+		div.container-fluid
+			div.row
+				div.col-xs-12
+					table.table.table-hover
+						thead
+							tr
+								th.col-xs-1 Detail
+								th.col-xs-2 Date
+								th.col-xs-1 Team
+								th.col-xs-3 Opponent
+								th.col-xs-4 Result
+								th.col-xs-1 Delete
+						tbody
+							tr(ng-repeat="sumula in sumulaList | filter:query")
+								td
+									button.btn.btn-link(type="button" ng-click="viewSumula(sumula._id)")
+										span.glyphicon.glyphicon-search
+								td {{sumula.data | date:'dd/MM/yyyy'}}
+								td {{sumula.quadro}}
+								td {{sumula.adversario}}
+								td BSF {{sumula.goalsPro}} x {{sumula.goalsCon}} {{sumula.adversario}}
+								td
+									button.btn.btn-danger(type="button" ng-click="deleteSumula(sumula._id)")
+										span.glyphicon.glyphicon-remove
