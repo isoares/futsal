@@ -89,7 +89,7 @@ exports.postNewSumula = function(req, res) {
 	var players = [];
 	req.body.players.forEach(function(item) {
 		if (item.active) {
-			var itemPlayer = {idPlayer: item._id, gols: item.gols, yellow: item.yellow, red: item.red};
+			var itemPlayer = {idPlayer: item.idPlayer, gols: item.gols, yellow: item.yellow, red: item.red};
 			players.push(itemPlayer);
 		}
 	});

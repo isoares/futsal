@@ -1,6 +1,12 @@
 angular.module('futsalApp', [])
-	.controller('indexCont', function($scope, $rootScope) {
-	    $scope.title = "Express";
+	.controller('indexCont', function($scope, $rootScope, $http, $window) {
+	    $http.get('/rSumulas/list')
+	        .success(function(data) {
+	            $scope.rSumulaList = data;
+	        })
+	        .error(function(data) {
+	        	$rootScope.info = data;
+	        });
 	})
 	.controller('userCont', function($scope, $rootScope, $http, $window) {
 	    $http.get('/users/list')
@@ -113,6 +119,10 @@ angular.module('futsalApp', [])
 	    $http.get('/players/list')
         	.success(function(data) {
         		//$scope.playerList = data;
+        		
+        		for (i in data) {
+        			data[i].idPlayer = data[i]._id;
+        		}
         		
         		$scope.sumula = {
         				data: '',
