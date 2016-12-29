@@ -88,7 +88,7 @@ exports.newSumula = function(req, res) {
 exports.postNewSumula = function(req, res) {
 	var players = [];
 	req.body.players.forEach(function(item) {
-		if (item.active) {
+		if (item.selected) {
 			var itemPlayer = {idPlayer: item.idPlayer, gols: item.gols, yellow: item.yellow, red: item.red};
 			players.push(itemPlayer);
 		}

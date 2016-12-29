@@ -23,7 +23,8 @@ block content
 							tr
 								th.col-xs-1 Edit
 								th.col-xs-1
-								th.col-xs-9 Name
+								th.col-xs-7 Name
+								th.col-xs-2 Active
 								th.col-xs-1 Delete
 						tbody
 							tr(ng-repeat="p in playerList | filter:query")
@@ -33,6 +34,11 @@ block content
 								td
 									img(src="/players/getPlayerPhoto/{{p._id}}" width="70%")
 								td {{p.name}}
+								td
+									button.btn(ng-class="{'btn-danger': p.active == false}" type="button" ng-click="inactivePlayer(p._id)")
+										span.glyphicon.glyphicon-remove-circle
+									button.btn(ng-class="{'btn-success': p.active == true}" type="button" ng-click="activePlayer(p._id)")
+										span.glyphicon.glyphicon-ok-circle
 								td
 									button.btn.btn-danger(type="button" ng-click="deletePlayer(p._id)")
 										span.glyphicon.glyphicon-remove

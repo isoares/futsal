@@ -26,6 +26,17 @@ var playersList = function(req, res) {
 
 exports.playersList = playersList;
 
+exports.playersListActive = function(req, res) {
+	Player.find({active: true}).select('-photo').exec(function(err, playersList) {
+		if (err) {
+			res.json(err);
+        }
+        else {
+        	res.json(playersList);
+        }
+	});
+}; 
+
 exports.getPlayerPhotoDefault = function(req, res){
 	res.writeHead(200, {'Content-Type': 'image/png'});
 	res.end(fs.readFileSync('./public/images/photo.png'));
@@ -90,6 +101,8 @@ exports.postNewPlayer = function(req, res){
         	if (!player) {
         		player = new Player();
         		
+        		player.active = true;
+        		
         		if (!req.file) {
         			player.photo.data = fs.readFileSync('./public/images/photo.png');
         			player.photo.contentType = 'image/png';
@@ -111,6 +124,26 @@ exports.postNewPlayer = function(req, res){
 					res.json();
 				}
 			});
+        }
+	});
+};
+
+exports.inactivePlayer = function(req, res) {	
+	Player.findOneAndUpdate({_id: req.params._id}, {$set: { active:false } }, function(err) {
+		if (err) {
+			res.json(err);
+        } else {
+        	playersList(req, res);
+        }
+	});
+};
+
+exports.activePlayer = function(req, res) {	
+	Player.findOneAndUpdate({_id: req.params._id}, {$set: { active:true } }, function(err) {
+		if (err) {
+			res.json(err);
+        } else {
+        	playersList(req, res);
         }
 	});
 };

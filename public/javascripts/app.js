@@ -54,6 +54,26 @@ angular.module('futsalApp', [])
 	        	$rootScope.info = data;
 	        });
 	    
+	    $scope.inactivePlayer = function(_id) {
+	    	$http.post('/inactivePlayer/' + _id)
+	            .success(function(data) {
+	            	$scope.playerList = data;
+	            })
+	            .error(function(data) {
+	            	$rootScope.info = data;
+	            });
+	    };
+	    
+	    $scope.activePlayer = function(_id) {
+	    	$http.post('/activePlayer/' + _id)
+	            .success(function(data) {
+	            	$scope.playerList = data;
+	            })
+	            .error(function(data) {
+	            	$rootScope.info = data;
+	            });
+	    };
+	    
 	    $scope.deletePlayer = function(_id) {
 	    	$http.post('/deletePlayer/' + _id)
 	            .success(function(data) {
@@ -81,13 +101,13 @@ angular.module('futsalApp', [])
 	    	}
 	    };
 	    
-	    $scope.createPlayer = function() {	    	
+	    $scope.createPlayer = function() {
 	    	var file = document.getElementById('playerPhoto').files[0];
 	        var fd = new FormData();
 	        fd.append('file', file);
 	        if ($scope.player._id) {
 	        	fd.append('_id', $scope.player._id);
-	        }	        
+	        }
 	        fd.append('name', $scope.player.name);
 	        
 	        $http.post('/newPlayer', fd, //$scope.player,
@@ -116,7 +136,7 @@ angular.module('futsalApp', [])
 	        	$rootScope.info = data;
 	        });
 	    
-	    $http.get('/players/list')
+	    $http.get('/players/listActive')
         	.success(function(data) {
         		//$scope.playerList = data;
         		

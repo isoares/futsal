@@ -99,6 +99,7 @@ app.post('/login', user.postLogin);
 // player
 app.get('/players', player.players);
 app.get('/players/list', player.playersList);
+app.get('/players/listActive', player.playersListActive);
 app.get('/players/getPlayerPhoto/:id', player.getPlayerPhoto);
 app.get('/players/getPlayerPhoto', player.getPlayerPhotoDefault);
 app.get('/newPlayer', player.newPlayer);
@@ -106,6 +107,8 @@ app.get('/findPlayer/:_id', player.findPlayer);
 app.get('/updatePlayer/:_id', player.newPlayer);
 
 app.post('/newPlayer', multer().single('file'), player.postNewPlayer);
+app.post('/inactivePlayer/:_id', player.inactivePlayer);
+app.post('/activePlayer/:_id', player.activePlayer);
 app.post('/deletePlayer/:_id', player.deletePlayer);
 
 // sumula

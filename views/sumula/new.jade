@@ -55,17 +55,17 @@ block content
 										tbody
 											tr(ng-repeat="p in sumula.players")
 												td
-													input.form-control(type="checkbox" ng-model="p.active" ng-disabled="view")
+													input.form-control(type="checkbox" ng-model="p.selected" ng-disabled="view")
 												td
 													img(src="/players/getPlayerPhoto/{{p.idPlayer}}" width="70%")
 												td
 													label {{p.name}}
 												td
-													input.form-control(type="text" ng-model="p.gols" ng-disabled="!p.active")
+													input.form-control(type="text" ng-model="p.gols" ng-disabled="!p.selected")
 												td
-													input.form-control(type="checkbox" ng-model="p.yellow" ng-disabled="!p.active")
+													input.form-control(type="checkbox" ng-model="p.yellow" ng-disabled="!p.selected")
 												td
-													input.form-control(type="checkbox" ng-model="p.red" ng-disabled="!p.active")
+													input.form-control(type="checkbox" ng-model="p.red" ng-disabled="!p.selected")
 						div
 							hr
 							button.btn.btn-default(type="submit" ng-hide="view") Submit
