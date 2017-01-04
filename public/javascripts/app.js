@@ -1,8 +1,48 @@
 angular.module('futsalApp', [])
+	.filter('removeSpaces', [function() {
+	    return function(string) {
+	        if (!angular.isString(string)) {
+	            return string;
+	        }
+	        return string.replace(/[\s]/g, '');
+	    };
+	}])
 	.controller('indexCont', function($scope, $rootScope, $http, $window) {
-	    $http.get('/rSumulas/list')
+	    $http.get('/rSumulas/listTeam')
+        	.success(function(data) {
+        		$scope.rSumulaListTeam = data;
+	        })
+	        .error(function(data) {
+	        	$rootScope.info = data;
+	        });
+	    
+	    $http.get('/rSumulas/listTotal')
 	        .success(function(data) {
-	            $scope.rSumulaList = data;
+	            $scope.rSumulaListTotal = data;
+	        })
+	        .error(function(data) {
+	        	$rootScope.info = data;
+	        });
+	    
+	    $http.get('/rSumulas/listComp')
+	    	.success(function(data) {
+	    		$scope.rSumulaListComp = data;
+	        })
+	        .error(function(data) {
+	        	$rootScope.info = data;
+	        });
+	    
+	    $http.get('/rSumulas/listCompTeam')
+	    	.success(function(data) {
+	    		$scope.rSumulaListCompTeam = data;
+	        })
+	        .error(function(data) {
+	        	$rootScope.info = data;
+	        });
+	    
+	    $http.get('/rSumulas/listCompTotal')
+	    	.success(function(data) {
+	    		$scope.rSumulaListCompTotal = data;
 	        })
 	        .error(function(data) {
 	        	$rootScope.info = data;
@@ -145,11 +185,6 @@ angular.module('futsalApp', [])
         		}
         		
         		$scope.sumula = {
-        				data: '',
-        				quadro: '',
-        				adversario: '',
-        				golsFavor: '',
-        				golsContra: '',
         				players: data
         			};
         		

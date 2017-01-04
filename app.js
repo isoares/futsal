@@ -84,7 +84,11 @@ if ('development' == app.get('env')) {
 //passport.deserializeUser(Account.deserializeUser());
 
 app.get('/', index.index);
-app.get('/rSumulas/list', index.rSumulasList);
+app.get('/rSumulas/listTeam', index.rSumulasListTeam);
+app.get('/rSumulas/listTotal', index.rSumulasListTotal);
+app.get('/rSumulas/listComp', index.rSumulasListComp);
+app.get('/rSumulas/listCompTeam', index.rSumulasListCompTeam);
+app.get('/rSumulas/listCompTotal', index.rSumulasListCompTotal);
 
 // user
 app.get('/register', user.getRegister);

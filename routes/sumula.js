@@ -94,8 +94,17 @@ exports.postNewSumula = function(req, res) {
 		}
 	});
 	
-	var sumulaObj = {data: req.body.data, quadro: req.body.quadro, adversario: req.body.adversario, goalsPro: req.body.goalsPro, goalsCon: req.body.goalsCon, players: players};
+	var sumulaObj = {
+			competicao: req.body.competicao,
+			data: req.body.data, 
+			quadro: req.body.quadro, 
+			adversario: req.body.adversario, 
+			goalsPro: req.body.goalsPro, 
+			goalsCon: req.body.goalsCon, 
+			players: players};
+	
 	var sumula = new Sumula(sumulaObj);
+	
 	sumula.save(function(err, doc) {
 		if(err || !doc) {
 			res.json(err);

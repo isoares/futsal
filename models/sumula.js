@@ -9,6 +9,7 @@ module.exports = function (mongoose,  dbConn) {
 
 	SumulaSchema = new mongoose.Schema({
 		data: Date,
+		competicao: String,
 		quadro: Number,
 		adversario: String,
 		goalsPro: Number,

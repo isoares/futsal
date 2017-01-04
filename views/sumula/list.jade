@@ -14,7 +14,7 @@ block content
 							span.glyphicon.glyphicon-plus
 							|  New
 					div.col-xs-7
-						input.form-control(type="text" ng-model="query" placeholder="Search for a game")
+						input.form-control(type="text" ng-model="query" placeholder="Search for a game" autofocus)
 		div.container-fluid
 			div.row
 				div.col-xs-12
@@ -22,16 +22,18 @@ block content
 						thead
 							tr
 								th.col-xs-1 Detail
-								th.col-xs-2 Date
+								th.col-xs-2 Competicao
+								th.col-xs-1 Date
 								th.col-xs-1 Team
 								th.col-xs-3 Opponent
-								th.col-xs-4 Result
+								th.col-xs-3 Result
 								th.col-xs-1 Delete
 						tbody
 							tr(ng-repeat="sumula in sumulaList | filter:query")
 								td
 									button.btn.btn-link(type="button" ng-click="viewSumula(sumula._id)")
 										span.glyphicon.glyphicon-search
+								td {{sumula.competicao}}
 								td {{sumula.data | date:'dd/MM/yyyy'}}
 								td {{sumula.quadro}}
 								td {{sumula.adversario}}

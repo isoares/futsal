@@ -15,9 +15,13 @@ block content
 						div.row
 							div.col-xs-6
 								.form-group
+									label(for="sumulaCompeticao") Competicao
+									input.form-control(type="text" ng-model="sumula.competicao" id="sumulaCompeticao" ng-disabled="view" required autofocus)
+							div.col-xs-3
+								.form-group
 									label(for="sumulaData") Date
 									input.form-control(type="date" ng-model="sumula.data" id="sumulaData" ng-disabled="view" required)
-							div.col-xs-6
+							div.col-xs-3
 								.form-group
 									label(for="sumulaQuadro") Team
 									input.form-control(type="text" ng-model="sumula.quadro" id="sumulaQuadro" placeholder="Team" ng-disabled="view" required)

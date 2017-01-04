@@ -12,7 +12,7 @@ block content
 			form(role='form' ng-submit="registerUser()" style='max-width: 300px;')
 				.form-group
 					label(for="userName") Name:
-					input.form-control(type='text' ng-model="formData.name" id="userName" placeholder='Name' required)
+					input.form-control(type='text' ng-model="formData.name" id="userName" placeholder='Name' required autofocus)
 				.form-group
 					label(for="userUsername") Username:
 					input.form-control(type='text' ng-model="formData.username" id="userUsername" placeholder='Username' required)

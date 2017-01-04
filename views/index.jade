@@ -11,26 +11,84 @@ block content
 		div.container-fluid
 			div.row
 				div.col-xs-12
-					table.table.table-hover
-						thead
-							tr
-								th.col-xs-3 Team
-								th.col-xs-2 Games
-								th.col-xs-1 Wins
-								th.col-xs-1 Draws
-								th.col-xs-1 Losses
-								th.col-xs-1 Goals Pro
-								th.col-xs-1 Goals Con
-								th.col-xs-1 Goals Diff
-								th.col-xs-1 %
-						tbody
-							tr(ng-repeat="s in rSumulaList")
-								td {{s._id}}
-								td {{s.games}}
-								td {{s.wins}}
-								td {{s.draws}}
-								td {{s.losses}}
-								td {{s.goalsPro}}
-								td {{s.goalsCon}}
-								td {{s.goalsDif}}
-								td {{(((s.wins * 3) + s.draws) / (s.games * 3)) * 100 | number:2}} %
+					div.panel-group(id="accordion")
+						div.panel.panel-default
+							div.panel-heading
+								h4.panel-title
+									//a(data-toggle="collapse" data-parent="#accordion" href="#divGeneral") General
+									a(data-toggle="collapse" href="#divGeneral") General
+							div.panel-collapse.collapse.in(id="divGeneral")
+								div.panel-body
+									table.table.table-hover
+										thead
+											tr
+												th.col-xs-3 Team
+												th.col-xs-2 Games
+												th.col-xs-1 Wins
+												th.col-xs-1 Draws
+												th.col-xs-1 Losses
+												th.col-xs-1 Goals Pro
+												th.col-xs-1 Goals Con
+												th.col-xs-1 Goals Diff
+												th.col-xs-1 %
+										tbody
+											tr(ng-repeat="s in rSumulaListTeam")
+												td {{s._id}}
+												td {{s.games}}
+												td {{s.wins}}
+												td {{s.draws}}
+												td {{s.losses}}
+												td {{s.goalsPro}}
+												td {{s.goalsCon}}
+												td {{s.goalsDif}}
+												td {{(((s.wins * 3) + s.draws) / (s.games * 3)) * 100 | number:2}} %
+											tr.active(ng-repeat="s in rSumulaListTotal")
+												td {{s._id}}
+												td {{s.games}}
+												td {{s.wins}}
+												td {{s.draws}}
+												td {{s.losses}}
+												td {{s.goalsPro}}
+												td {{s.goalsCon}}
+												td {{s.goalsDif}}
+												td {{(((s.wins * 3) + s.draws) / (s.games * 3)) * 100 | number:2}} %
+						div.panel.panel-default(ng-repeat="comp in rSumulaListComp")
+							div.panel-heading
+								h4.panel-title
+									//a(data-toggle="collapse" data-parent="#accordion" href="#divFutliga") Futliga
+									a(data-toggle="collapse" href="#divComp{{$index}}") {{comp._id}}
+							div.panel-collapse.collapse(id="divComp{{$index}}")
+								div.panel-body
+									table.table.table-hover
+										thead
+											tr
+												th.col-xs-3 Team
+												th.col-xs-2 Games
+												th.col-xs-1 Wins
+												th.col-xs-1 Draws
+												th.col-xs-1 Losses
+												th.col-xs-1 Goals Pro
+												th.col-xs-1 Goals Con
+												th.col-xs-1 Goals Diff
+												th.col-xs-1 %
+										tbody
+											tr(ng-repeat="s in rSumulaListCompTeam | filter: comp._id")
+												td {{s._id.quadro}}
+												td {{s.games}}
+												td {{s.wins}}
+												td {{s.draws}}
+												td {{s.losses}}
+												td {{s.goalsPro}}
+												td {{s.goalsCon}}
+												td {{s.goalsDif}}
+												td {{(((s.wins * 3) + s.draws) / (s.games * 3)) * 100 | number:2}} %
+											tr.active(ng-repeat="s in rSumulaListCompTotal | filter: comp._id")
+												td {{s._id.quadro}}
+												td {{s.games}}
+												td {{s.wins}}
+												td {{s.draws}}
+												td {{s.losses}}
+												td {{s.goalsPro}}
+												td {{s.goalsCon}}
+												td {{s.goalsDif}}
+												td {{(((s.wins * 3) + s.draws) / (s.games * 3)) * 100 | number:2}} %
