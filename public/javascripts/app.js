@@ -94,6 +94,22 @@ angular.module('futsalApp', [])
 	        	$rootScope.info = data;
 	        });
 	    
+	    $scope.fileReaderSupported = window.FileReader != null;
+	    
+	    $scope.photoChanged = function(element) {
+	    	if (element.files != null) {
+	    		var file = element.files[0];
+	            if ($scope.fileReaderSupported && file.type.indexOf('image') > -1) {
+	            	var fileReader = new FileReader();
+	            	fileReader.readAsDataURL(file);
+	            	fileReader.onload = function(e) {
+	            		$scope.photo_src = e.target.result;
+	            		$scope.$apply();
+	            	}
+	            }
+	        }
+	    };
+	    
 	    $scope.inactivePlayer = function(_id) {
 	    	$http.post('/inactivePlayer/' + _id)
 	            .success(function(data) {

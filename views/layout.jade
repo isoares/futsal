@@ -14,7 +14,7 @@ html
 			block content
 			br
 			div.col-xs-12
-				div.alert.alert-danger(ng-hide="!info.message")
+				div.alert.alert-danger(ng-show="info.message")
 					h4 {{info.message}}
-				div.alert.alert-success(ng-hide="!success.message")
+				div.alert.alert-success(ng-show="success.message")
 					h4 {{success.message}}
