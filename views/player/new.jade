@@ -1,7 +1,6 @@
 extends ../layout
 
 block page
-	- var menu = 'players'
 
 block content
 	div(ng-controller="playerCont")
@@ -10,11 +9,12 @@ block content
 				h2 Player
 		div.container-fluid
 			div.row(ng-init="findPlayer('#{_id}')")
-				div.col-xs-12
+				div.col-xs-4
+				div.col-xs-4
 					form(role="form", ng-submit="createPlayer()" style="max-width: 300px;" enctype="multipart/form-data")
-						.form-group
-							img(src="/players/getPlayerPhoto/{{player._id}}" ng-show="!photo_src")
-							img(ng-src="{{photo_src}}" ng-show="photo_src")
+						.form-group.text-center
+							img(src="/players/getPlayerPhoto/{{player._id}}" ng-show="!photo_src" width="100%")
+							img(ng-src="{{photo_src}}" ng-show="photo_src" width="256px")
 						.form-group
 							label(for="playerPhoto") Photo:
 							input.form-control(type="file" id="playerPhoto" onchange="angular.element(this).scope().photoChanged(this)")
@@ -24,3 +24,4 @@ block content
 						button.btn.btn-default(type="submit") Submit
 						&nbsp;
 						a(href="/players").button.btn.btn-primary Cancel
+				div.col-xs-4

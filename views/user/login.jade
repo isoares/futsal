@@ -1,7 +1,6 @@
 extends ../layout
 
 block page
-	- var menu = 'login'
 	
 block content
 	div(ng-controller="userCont")
@@ -9,14 +8,21 @@ block content
 			div.container-fluid
 				h2 Login
 		div.container-fluid
-			form(role='form' ng-submit="login()" style='max-width: 300px;')
-				.form-group
-					label(for="userUsername") Username:
-					input.form-control(type='text' ng-model="formData.username" id="userUsername" placeholder='Username' autofocus)
-				.form-group
-					label(for="userPassword") Password:
-					input.form-control(type='password' ng-model="formData.password" id="userPassword" placeholder='Password')
-				button.btn.btn-default(type='submit') Submit
-				&nbsp;
-				a(href='/')
-					button.btn.btn-primary(type="button") Cancel
+			div.row
+				div.col-xs-4
+				div.col-xs-4
+					form(role='form' ng-submit="login(newPasswordRequired)" style='max-width: 300px;')
+						.form-group
+							label(for="userUsername") Username:
+							input.form-control(type='text' ng-model="formData.username" id="userUsername" placeholder='Username' autofocus ng-disabled="newPasswordRequired")
+						.form-group
+							label(for="userPassword") Password:
+							input.form-control(type='password' ng-model="formData.password" id="userPassword" placeholder='Password' ng-disabled="newPasswordRequired")
+						.form-group(ng-show="newPasswordRequired")
+							label(for="userNewPassword") New Password:
+							input.form-control(type='password' ng-model="formData.newPassword" id="userNewPassword" placeholder='New Password')
+						button.btn.btn-default(type='submit') Submit
+						&nbsp;
+						a(href='/')
+							button.btn.btn-primary(type="button") Cancel
+				div.col-xs-4

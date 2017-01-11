@@ -1,7 +1,6 @@
 extends ../layout
 
 block page
-	- var menu = 'users'
 
 block content
 	div(ng-controller="userCont")
@@ -9,17 +8,25 @@ block content
 			div.container-fluid
 				h2 Users
 		div.container-fluid
-			form(role='form' ng-submit="registerUser()" style='max-width: 300px;')
-				.form-group
-					label(for="userName") Name:
-					input.form-control(type='text' ng-model="formData.name" id="userName" placeholder='Name' required autofocus)
-				.form-group
-					label(for="userUsername") Username:
-					input.form-control(type='text' ng-model="formData.username" id="userUsername" placeholder='Username' required)
-				.form-group
-					label(for="userPassword") Password:
-					input.form-control(type='password' ng-model="formData.password" id="userPassword" placeholder='Password' required)
-				button.btn.btn-default(type='submit') Submit
-				&nbsp;
-				a(href='/users')
-					button.btn.btn-primary(type="button") Cancel
+			div.row
+				div.col-xs-4
+				div.col-xs-4
+					form(role='form' ng-submit="registerUser(#{firstUser})" style='max-width: 300px;')
+						.form-group
+							label(for="userName") Name:
+							input.form-control(type='text' ng-model="formData.name" id="userName" placeholder='Name' required autofocus)
+						.form-group
+							label(for="userUsername") Username:
+							input.form-control(type='text' ng-model="formData.username" id="userUsername" placeholder='Username' required)
+						.form-group
+							label(for="userPassword") Password:
+							input.form-control(type='password' ng-model="formData.password" id="userPassword" placeholder='Password' required)
+						.form-group
+							label
+								input(type="checkbox" ng-model="formData.admin" ng-init="formData.admin=#{firstUser}" ng-disabled="#{firstUser}")
+								|  Admin
+						button.btn.btn-default(type='submit') Submit
+						&nbsp;
+						a(href='/users')
+							button.btn.btn-primary(type="button") Cancel
+				div.col-xs-4

@@ -7,7 +7,12 @@ angular.module('futsalApp', [])
 	        return string.replace(/[\s]/g, '');
 	    };
 	}])
+	.controller('menuCont', function($scope, $rootScope, $http, $window) {
+		
+	})
 	.controller('indexCont', function($scope, $rootScope, $http, $window) {
+		$rootScope.itemMenu = 'index';
+		
 	    $http.get('/rSumulas/listTeam')
         	.success(function(data) {
         		$scope.rSumulaListTeam = data;
@@ -49,6 +54,8 @@ angular.module('futsalApp', [])
 	        });
 	})
 	.controller('userCont', function($scope, $rootScope, $http, $window) {
+		$rootScope.itemMenu = 'users';
+		
 	    $http.get('/users/list')
 	        .success(function(data) {
 	            $scope.userList = data;
@@ -57,21 +64,46 @@ angular.module('futsalApp', [])
 	        	$rootScope.info = data;
 	        });
 	
-	    $scope.login = function() {
-	        $http.post('/login', $scope.formData)
-	            .success(function(data) {
-	            	if (data == '') {
-	            		$window.location = '/';
-	            	} else {
-	            		$rootScope.info = data;
-	            	}
-	            })
-	            .error(function(data) {
-	            	$rootScope.info = {message: data};
-	            });
+	    $scope.login = function(newPasswordRequired) {
+	    	
+	    	if (newPasswordRequired) {
+		        $http.post('/changePassword', $scope.formData)
+		            .success(function(data) {
+		            	if (data == '') {
+		            		$window.location = '/';
+		            	} else {
+		            		$rootScope.info = data;
+		            	}
+		            })
+		            .error(function(data) {
+		            	$rootScope.info = {message: data};
+		            });
+	    	} else {
+		        $http.post('/login', $scope.formData)
+		            .success(function(data) {
+		            	if (data == '') {
+		            		$window.location = '/';
+		            	} else {
+		            		if (JSON.parse(data) == 'newPasswordRequired') {
+		            			$scope.newPasswordRequired = true;
+		            		} else {
+			            		$rootScope.info = data;
+			            	}
+		            	}
+		            })
+		            .error(function(data) {
+		            	$rootScope.info = {message: data};
+		            });
+	    	}
 	    };
 	    
-	    $scope.registerUser = function() {
+	    $scope.registerUser = function(firstUser) {	    	
+	    	if (firstUser) {
+	    		$scope.formData.status = 1;
+	    	} else {
+	    		$scope.formData.status = 0;
+	    	}
+	    	
 	        $http.post('/register', $scope.formData)
 	            .success(function(data) {
 	            	if (data == '') {
@@ -86,6 +118,8 @@ angular.module('futsalApp', [])
 	    };
 	})
 	.controller('playerCont', function($scope, $rootScope, $http, $window) {
+		$rootScope.itemMenu = 'players';
+		
 	    $http.get('/players/list')
 	        .success(function(data) {
 	            $scope.playerList = data;
@@ -184,6 +218,8 @@ angular.module('futsalApp', [])
 	    };
 	})
 	.controller('sumulaCont', function($scope, $rootScope, $http, $window, $filter) {
+		$rootScope.itemMenu = 'sumulas';
+		
 	    $http.get('/sumulas/list')
 	        .success(function(data) {
 	            $scope.sumulaList = data;
@@ -256,6 +292,8 @@ angular.module('futsalApp', [])
 	    };
 	})
 	.controller('rPlayerCont', function($scope, $rootScope, $http, $window) {
+		$rootScope.itemMenu = 'reports';
+		
 	    $http.get('/rPlayers/list')
 	        .success(function(data) {
 	            $scope.rPlayerList = data;

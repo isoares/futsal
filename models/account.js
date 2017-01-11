@@ -7,7 +7,8 @@ module.exports = function (mongoose,  dbConn) {
 		name: String,
 	    username: String,
 	    password: String,
-		status: Number
+	    admin: Boolean,
+		status: Number //0-New 1-Active 2-Inactive
 	});
 
 	Account.plugin(passportLocalMongoose);

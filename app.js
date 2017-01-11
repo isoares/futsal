@@ -91,6 +91,7 @@ app.get('/rSumulas/listCompTeam', index.rSumulasListCompTeam);
 app.get('/rSumulas/listCompTotal', index.rSumulasListCompTotal);
 
 // user
+app.get('/firstUser', user.getFirstUser);
 app.get('/register', user.getRegister);
 app.get('/login', user.getLogin);
 app.get('/logout', user.logout);
@@ -98,6 +99,7 @@ app.get('/users', user.users);
 app.get('/users/list', user.usersList);
 
 app.post('/register', user.postRegister);
+app.post('/changePassword', user.postChangePassword);
 app.post('/login', user.postLogin);
 
 // player

@@ -1,32 +1,33 @@
 .menu
-	nav.navbar.navbar-default.navbar-fixed-top
-		div.container-fluid
-			div.navbar-header
-				button.navbar-toggle(type="button" data-toggle="collapse" data-target="#myNavbar")
-					span.icon-bar
-					span.icon-bar
-					span.icon-bar
-				a(class="navbar-brand" href="/") Logo
-			div.collapse.navbar-collapse(id="myNavbar")
-				ul.nav.navbar-nav
-					li(class=(menu == 'index')?'active':'')
-						a(href='/') Team Stats
-					li(class=(menu == 'reports')?'active':'')
-						a(href='/rPlayers') Players Stats
-				ul.nav.navbar-nav.navbar-right
-					if (user)
-						li(class=(menu == 'sumulas')?'active':'')
-							a(href="/sumulas") Games
-						li(class=(menu == 'players')?'active':'')
-							a(href="/players") Players
-						li(class=(menu == 'users')?'active':'')
-							a(href="/users") Users
-						li
-							a(href="/logout")
-								span.glyphicon.glyphicon-log-out
-								|	Log out (#{user.username})
-					else
-						li(class=(menu == 'login')?'active':'')
-							a(href='/login')
-								span.glyphicon.glyphicon-log-in
-								|	Log in
+	div(ng-controller="menuCont")
+		nav.navbar.navbar-default.navbar-fixed-top
+			div.container-fluid
+				div.navbar-header
+					button.navbar-toggle(type="button" data-toggle="collapse" data-target="#myNavbar")
+						span.icon-bar
+						span.icon-bar
+						span.icon-bar
+					a(class="navbar-brand" href="/") Logo
+				div.collapse.navbar-collapse(id="myNavbar")
+					ul.nav.navbar-nav
+						li(ng-class="{'active' : itemMenu == 'index'}")
+							a(href='/') Team Stats
+						li(ng-class="{'active' : itemMenu == 'reports'}")
+							a(href='/rPlayers') Players Stats
+					ul.nav.navbar-nav.navbar-right
+						if (user)
+							li(ng-class="{'active' : itemMenu == 'sumulas'}")
+								a(href="/sumulas") Games
+							li(ng-class="{'active' : itemMenu == 'players'}")
+								a(href="/players") Players
+							li(ng-class="{'active' : itemMenu == 'users'}")
+								a(href="/users") Users
+							li
+								a(href="/logout")
+									span.glyphicon.glyphicon-log-out
+									|	Log out (#{user.username})
+						else
+							li
+								a(href='/login')
+									span.glyphicon.glyphicon-log-in
+									|	Log in

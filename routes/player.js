@@ -45,7 +45,7 @@ exports.getPlayerPhotoDefault = function(req, res){
 exports.getPlayerPhoto = function(req, res){
 	Player.findById(req.params.id).select('photo').exec(function(err, player) {
 		if (err) {
-			res.writeHead(200, {'Content-Type': 'image/png'});
+//			res.writeHead(200, {'Content-Type': 'image/png'});
 //	    		res.end(fs.readFileSync('./public/images/photo.png'));
 			res.end();
         } else {
