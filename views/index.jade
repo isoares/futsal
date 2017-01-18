@@ -3,4 +3,106 @@ extends layout
 block page
 
 block content
-	div.container-fluid(id="section1")
+	div.container-fluid
+		div.carousel.slide(id="myCarousel" data-ride="carousel")
+			<!-- Indicators -->
+			ol.carousel-indicators
+				li(data-target="#myCarousel" data-slide-to="0")
+				li(data-target="#myCarousel" data-slide-to="1")
+				li.active(data-target="#myCarousel" data-slide-to="2")
+				li(data-target="#myCarousel" data-slide-to="3")
+		
+			<!-- Wrapper for slides -->
+			div.carousel-inner(role="listbox").text-center
+				div.item
+					div.row
+						div.col-xs-3
+							img.logo.img-rounded(src="/images/logo_original.jpg" alt="Logo")
+						div.col-xs-6
+							div.row
+								div.col-xs-12
+									h1 01/01/2017
+							div.row
+								div.col-xs-4
+									p.placar 22
+								div.col-xs-4
+									p.placar-sign X
+								div.col-xs-4
+									p.placar 11
+							div.row
+								div.col-xs-12
+									h3 Copa Doroteia
+									p CDC
+						div.col-xs-3
+							img.logo.img-rounded(src="/images/logo_original.jpg" alt="Logo")						
+				div.item
+					div.row
+						div.col-xs-3
+							img.logo.img-rounded(src="/images/logo_original.jpg" alt="Logo")
+						div.col-xs-6
+							div.row
+								div.col-xs-12
+									h1.center 03/01/2017
+							div.row
+								div.col-xs-4
+									p.placar 44
+								div.col-xs-4
+									p.placar-sign X
+								div.col-xs-4
+									p.placar 33
+							div.row
+								div.col-xs-12
+									h3.center Copa Doroteia
+									p.center CDC
+						div.col-xs-3
+							img.logo.img-rounded(src="/images/logo_original.jpg" alt="Logo")
+				div.item.active
+					div.row
+						div.col-xs-3
+							img.logo.img-rounded(src="/images/logo_original.jpg" alt="Logo")
+						div.col-xs-6
+							div.row
+								div.col-xs-12
+									h1.center 05/01/2017
+							div.row
+								div.col-xs-4
+									p.placar 66
+								div.col-xs-4
+									p.placar-sign X
+								div.col-xs-4
+									p.placar 55
+							div.row
+								div.col-xs-12
+									h3.center Copa Doroteia
+									p.center CDC
+						div.col-xs-3
+							img.logo.img-rounded(src="/images/logo_original.jpg" alt="Logo")
+				div.item
+					div.row
+						div.col-xs-3
+							img.logo.img-rounded(src="/images/logo_original.jpg" alt="Logo")
+						div.col-xs-6
+							div.row
+								div.col-xs-12
+									h1.center 07/01/2017
+							div.row
+								div.col-xs-4
+									p.placar 
+								div.col-xs-4
+									p.placar-sign X
+								div.col-xs-4
+									p.placar 
+							div.row
+								div.col-xs-12
+									h3.center Copa Doroteia
+									p.center CDC
+						div.col-xs-3
+							img.logo.img-rounded(src="/images/logo_original.jpg" alt="Logo")
+		
+			<!-- Left and right controls -->
+			a.left.carousel-control(href="#myCarousel" role="button" data-slide="prev")
+				span.glyphicon.glyphicon-chevron-left(aria-hidden="true")
+				span.sr-only Previous
+			a.right.carousel-control(href="#myCarousel" role="button" data-slide="next")
+				span.glyphicon.glyphicon-chevron-right(aria-hidden="true")
+				span.sr-only Next

@@ -9,13 +9,13 @@ html
 		script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js')
 		script(src='/javascripts/app.js')
 		script(src='/javascripts/scrolling-nav.js')
-	body(ng-app="futsalApp" data-spy="scroll" data-target=".navbar" data-offset="50")
+	body(ng-app="futsalApp")
 			block page
 			div.capa
 				a(href="/")
 					img(src="/images/capa.jpg" width="100%")
 			include includes/menu
-			div.container-fluid
+			div.container-fluid.content
 				block content
 				br
 				div.col-xs-12

@@ -1,6 +1,7 @@
   body {
       position: relative;
-      min-width: 650px; 
+      min-width: 650px;
+      background-color: threedhighlight; 
   }
   .affix {
       top:0;
@@ -15,29 +16,59 @@
      position: relative;
      top: 50px;
   }
-  #section1 {padding-top:50px;height:1500px;}
+  
+  .content {padding-top:20px;}
   
   .capa {
   	overflow: hidden;
   	height: 140px;
-  	/*background-image: url("/images/capa.jpg");
-  	background-repeat: no-repeat;
-  	background-size: 100%*/
   }
   
   .navbar-brand {
   	padding-top: 2px;
   	padding-left: 2px;
-  	height: 0;
-  }
-  
-  .logo {
-	height: 0;
+  	display: none;
   }
   
   .affix .logo {
 	height: 45px;
   }
+  
+  .affix .navbar-brand {
+	display: block;
+  }
+  
+  .navbar-text {
+  	color: #fff !important;
+  }
+  
+  
+
+  .carousel-inner > .item > img,
+  .carousel-inner > .item > a > img,
+  .carousel-inner > .item > .row {
+      width: 70%;
+      margin: auto;
+  }
+  
+  .carousel-inner > .item > .row,
+  .carousel-inner > .item > .row > div {
+  	height: 350px;
+  }
+  
+  .carousel-inner > .item > .row > div > .logo {
+  	width: 150px;
+  }
+  
+  .placar {
+  	font-size: 80px;
+  }
+  
+  .placar-sign {
+  	font-size: 50px;
+  	padding-top: 20px;
+  }
+     
 
 @media(min-width:700px) {
 	.capa {

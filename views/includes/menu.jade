@@ -6,8 +6,13 @@ nav.navbar.navbar-inverse(data-spy="affix" data-offset-top="337")
 					span.icon-bar
 					span.icon-bar
 					span.icon-bar
-				a(class="navbar-brand" href="/")
-					img.logo(src="/images/logo.jpg")
+				div.navbar-brand.row
+					div.col-xs-3
+						a(href="/")
+							img.logo(src="/images/logo.jpg")
+					div.col-xs-9
+						a(href="/")
+							h4.navbar-text PRIMOR FC
 			div.collapse.navbar-collapse(id="myNavbar")
 				ul.nav.navbar-nav.navbar-right
 					li(ng-class="{'active' : itemMenu == 'index'}")
