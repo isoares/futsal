@@ -7,6 +7,10 @@ exports.index = function(req, res){
 	res.render('index', { user : req.user });
 };
 
+exports.rSumulas = function(req, res){
+	res.render('reports/team', { user : req.user });
+};
+
 exports.rSumulasListTotal = function(req, res) {	
 	Sumula.aggregate(
 			[

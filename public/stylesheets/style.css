@@ -1,0 +1,127 @@
+  body {
+      position: relative;
+      min-width: 650px; 
+  }
+  .affix {
+      top:0;
+      width: 100%;
+      z-index: 9999 !important;
+  }
+  .navbar {
+      margin-bottom: 0px;
+  }
+
+  .affix ~ .container-fluid {
+     position: relative;
+     top: 50px;
+  }
+  #section1 {padding-top:50px;height:1500px;}
+  
+  .capa {
+  	overflow: hidden;
+  	height: 140px;
+  	/*background-image: url("/images/capa.jpg");
+  	background-repeat: no-repeat;
+  	background-size: 100%*/
+  }
+  
+  .navbar-brand {
+  	padding-top: 2px;
+  	padding-left: 2px;
+  	height: 0;
+  }
+  
+  .logo {
+	height: 0;
+  }
+  
+  .affix .logo {
+	height: 45px;
+  }
+
+@media(min-width:700px) {
+	.capa {
+  		height: 150px;
+	}
+}
+
+@media(min-width:750px) {
+	.capa {
+  		height: 165px;
+	}
+}
+
+@media(min-width:800px) {
+	.capa {
+  		height: 180px;
+	}
+}
+
+@media(min-width:850px) {
+	.capa {
+  		height: 200px;
+	}
+}
+
+@media(min-width:900px) {
+	.capa {
+  		height: 220px;
+	}
+}
+
+@media(min-width:1000px) {
+	.capa {
+  		height: 240px;
+	}
+}
+  
+@media(min-width:1100px) {
+	.capa {
+  		height: 260px;
+	}
+}
+@media(min-width:1200px) {
+	.capa {
+  		height: 280px;
+	}
+}
+@media(min-width:1370px) {
+	.capa {
+  		height: 300px;
+	}
+}
+@media(min-width:1450px) {
+	.capa {
+  		height: 320px;
+	}
+}
+@media(min-width:1510px) {
+	.capa {
+  		height: 340px;
+	}
+}
+@media(min-width:1670px) {
+	.capa {
+  		height: 360px;
+	}
+}
+@media(min-width:1820px) {
+	.capa {
+  		height: 380px;
+	}
+}
+@media(min-width:1990px) {
+	.capa {
+  		height: 400px;
+	}
+}
+@media(min-width:2150px) {
+	.capa {
+  		height: 420px;
+	}
+}
+@media(min-width:2300px) {
+	.capa {
+  		height: 440px;
+	}
+}

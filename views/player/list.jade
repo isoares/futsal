@@ -31,7 +31,7 @@ block content
 									button.btn.btn-link(type="button" ng-click="updatePlayer(p._id)")
 										span.glyphicon.glyphicon-edit
 								td
-									img(src="/players/getPlayerPhoto/{{p._id}}" width="70%")
+									img.img-circle(src="/players/getPlayerPhoto/{{p._id}}" width="70%")
 								td {{p.name}}
 								td
 									button.btn(ng-class="{'btn-danger': p.active == false}" type="button" ng-click="inactivePlayer(p._id)")

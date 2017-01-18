@@ -27,7 +27,7 @@ block content
 						tbody
 							tr(ng-repeat="p in rPlayerList | filter:query")
 								td
-									img(src="/players/getPlayerPhoto/{{p._id}}" width="70%")
+									img.img-circle(src="/players/getPlayerPhoto/{{p._id}}" width="70%")
 								td {{p.name}}
 								td {{p.jogos}}
 								td {{p.gols}}

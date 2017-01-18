@@ -8,13 +8,18 @@ html
 		script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")		
 		script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js')
 		script(src='/javascripts/app.js')
-	body(ng-app="futsalApp")
+		script(src='/javascripts/scrolling-nav.js')
+	body(ng-app="futsalApp" data-spy="scroll" data-target=".navbar" data-offset="50")
 			block page
+			div.capa
+				a(href="/")
+					img(src="/images/capa.jpg" width="100%")
 			include includes/menu
-			block content
-			br
-			div.col-xs-12
-				div.alert.alert-danger(ng-show="info.message")
-					h4 {{info.message}}
-				div.alert.alert-success(ng-show="success.message")
-					h4 {{success.message}}
+			div.container-fluid
+				block content
+				br
+				div.col-xs-12
+					div.alert.alert-danger(ng-show="info.message")
+						h4 {{info.message}}
+					div.alert.alert-success(ng-show="success.message")
+						h4 {{success.message}}

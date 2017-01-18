@@ -13,11 +13,11 @@ block content
 				div.col-xs-4
 					form(role="form", ng-submit="createPlayer()" style="max-width: 300px;" enctype="multipart/form-data")
 						.form-group.text-center
-							img(src="/players/getPlayerPhoto/{{player._id}}" ng-show="!photo_src" width="100%")
-							img(ng-src="{{photo_src}}" ng-show="photo_src" width="256px")
+							img.img-circle(src="/players/getPlayerPhoto/{{player._id}}" ng-show="!photo_src" width="100%")
+							img.img-circle(ng-src="{{photo_src}}" ng-show="photo_src" width="256px")
 						.form-group
 							label(for="playerPhoto") Photo:
-							input.form-control(type="file" id="playerPhoto" onchange="angular.element(this).scope().photoChanged(this)")
+							input.form-control(type="file" id="playerPhoto" accept="image/*" onchange="angular.element(this).scope().photoChanged(this)")
 						.form-group
 							label(for="playerName") Name:
 							input.form-control(type="text" ng-model="player.name" id="playerName" placeholder="Name" required autofocus)
