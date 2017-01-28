@@ -56,8 +56,22 @@
   	height: 350px;
   }
   
+  .carousel-inner > .item > .row > divLogo {
+	display: inline-block;
+	position: relative;
+  }
+  
   .carousel-inner > .item > .row > div > .logo {
-  	width: 150px;
+  	max-height: 70%;
+  	max-width: 70%;
+	width: auto;
+	height: auto;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
   }
   
   .placar {
@@ -69,6 +83,7 @@
   	padding-top: 20px;
   }
      
+
 
 @media(min-width:700px) {
 	.capa {
@@ -155,4 +170,25 @@
 	.capa {
   		height: 440px;
 	}
+}
+
+.divcent{
+  height: 260px; /*can be anything*/
+  width: 260px; /*can be anything*/
+  display: inline-block;
+  border: 1px solid black; /*not required*/
+  position: relative;
+}
+
+.imagem {
+  max-height: 70%;
+  max-width: 70%;
+  width: auto;
+  height: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
 }
